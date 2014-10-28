@@ -1,4 +1,8 @@
 FLATS::Application.routes.draw do
+  resources :diets
+
+  resources :exercises
+
   devise_for :users
   
   

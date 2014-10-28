@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027210621) do
+ActiveRecord::Schema.define(version: 20141028003336) do
+
+  create_table "diets", force: true do |t|
+    t.string   "fName",      default: "",  null: false
+    t.text     "descr",      default: "",  null: false
+    t.decimal  "calories",   default: 0.0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercises", force: true do |t|
+    t.string   "fName",      default: "",  null: false
+    t.text     "descr",      default: "",  null: false
+    t.decimal  "calories",   default: 0.0, null: false
+    t.integer  "intensity",  default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
