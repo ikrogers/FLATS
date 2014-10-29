@@ -1,0 +1,25 @@
+<h1>Listing exercise_managers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exercise_managers.each do |exercise_manager| %>
+      <tr>
+        <td><%= link_to 'Show', exercise_manager %></td>
+        <td><%= link_to 'Edit', edit_exercise_manager_path(exercise_manager) %></td>
+        <td><%= link_to 'Destroy', exercise_manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exercise manager', new_exercise_manager_path %>

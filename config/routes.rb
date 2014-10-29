@@ -1,4 +1,8 @@
 FLATS::Application.routes.draw do
+  resources :diet_managers
+
+  resources :exercise_managers
+
   resources :diets
 
   resources :exercises
