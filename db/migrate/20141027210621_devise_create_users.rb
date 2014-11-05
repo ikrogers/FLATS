@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :height
       t.integer :ex_score
       t.integer :diet_score
-      t.boolean :diet_fitness_flag
+      t.integer :diet_fitness_flag
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

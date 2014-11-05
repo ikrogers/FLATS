@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141029194052) do
     t.integer  "height"
     t.integer  "ex_score"
     t.integer  "diet_score"
-    t.boolean  "diet_fitness_flag"
+    t.integer  "diet_fitness_flag"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
