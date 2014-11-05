@@ -14,12 +14,14 @@
 ActiveRecord::Schema.define(version: 20141029194052) do
 
   create_table "diet_managers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "diet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "diets", force: true do |t|
-    t.string   "fName",      default: "",  null: false
+    t.string   "name",       default: "",  null: false
     t.text     "descr",      default: "",  null: false
     t.decimal  "calories",   default: 0.0, null: false
     t.datetime "created_at"
@@ -27,12 +29,14 @@ ActiveRecord::Schema.define(version: 20141029194052) do
   end
 
   create_table "exercise_managers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "ex_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "exercises", force: true do |t|
-    t.string   "fName",      default: "",  null: false
+    t.string   "name",       default: "",  null: false
     t.text     "descr",      default: "",  null: false
     t.decimal  "calories",   default: 0.0, null: false
     t.integer  "intensity",  default: 0,   null: false
@@ -41,6 +45,16 @@ ActiveRecord::Schema.define(version: 20141029194052) do
   end
 
   create_table "users", force: true do |t|
+    t.text     "fname"
+    t.text     "lname"
+    t.integer  "u_type"
+    t.text     "gender"
+    t.datetime "bday"
+    t.integer  "weight"
+    t.integer  "height"
+    t.integer  "ex_score"
+    t.integer  "diet_score"
+    t.boolean  "diet_fitness_flag"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
