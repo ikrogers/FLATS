@@ -8,10 +8,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :u_type
       t.text :gender
       t.datetime :bday
-      t.double :weight
-      t.double :height
-      t.double :ex_score
-      t.double :diet_score
+      t.decimal :weight
+      t.decimal :height
+      t.decimal :ex_score
+      t.decimal :diet_score
       t.boolean :diet_fitness_flag
 
       ## Database authenticatable
