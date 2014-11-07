@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><%= link_to('<i class="fa fa-home fa-fw"></i> Home'.html_safe, 'https://flats-c9-whytesensei.c9.io/') %></li>
+                <li><%= link_to('<i class="fa fa-home fa-fw"></i> Home'.html_safe, authenticated_root_path) %></li>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
@@ -35,7 +35,6 @@
                         </ul></a>
                     </li>
                 <% else %>
-                <li><%= link_to('<i class="fa fa-user fa-fw"></i> Login'.html_safe, new_user_session_path) %></li>
                 <li><%= link_to('Register', new_user_registration_path) %></li>
                 <% end %>
             </ul>
