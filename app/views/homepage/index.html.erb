@@ -1,5 +1,15 @@
-
 <h1>Welcome nubs!</h1>
 <%= button_to "Log Out", destroy_user_session_path, :method => :delete%>
+<% if current_user.u_type == 1%>
+<h1>YOU ARE ADMIN</h1>
+<%end%>
+<% if current_user.u_type == 1%>
+<h1>YOU ARE Trainer?</h1>
+<%end%>
 
+<% if current_user.u_type == 1%>
+
+<h1>YOU ARE Regular user</h1>
+
+<%end%>
 <h1>WELCOME! THIS IS A PAGE AUTHENTICATED USER LANDS ON</h1>
