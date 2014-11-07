@@ -1,4 +1,5 @@
 class ExerciseManagersController < ApplicationController
+  respond_to :html, :xml, :json
   before_action :set_exercise_manager, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -40,6 +41,6 @@ class ExerciseManagersController < ApplicationController
     end
 
     def exercise_manager_params
-      params[:exercise_manager]
+      params.require(:exercise_manager).permit(:user_id, :exercise_id)
     end
 end

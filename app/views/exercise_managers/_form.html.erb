@@ -10,7 +10,15 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <div class="form-field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div class="form-field">
+    <%= f.label :exercise_id %><br>
+    <%= f.collection_select(:exercise_id, Exercise.all, :id, :routine) %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
