@@ -8,11 +8,19 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :u_type
       t.text :gender
       t.datetime :bday
+<<<<<<< HEAD
       t.integer :weight
       t.integer :height
       t.integer :ex_score
       t.integer :diet_score
       t.integer :diet_fitness_flag
+=======
+      t.decimal :weight
+      t.decimal :height
+      t.decimal :ex_score
+      t.decimal :diet_score
+      t.boolean :diet_fitness_flag
+>>>>>>> 80efdba88b7e800395887d54047aefcfefce0267
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
