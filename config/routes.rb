@@ -1,25 +1,4 @@
-FLATS::Application.routes.draw do
-  resources :diet_managers
-
-  resources :exercise_managers
-
-  resources :diets
-
-  resources :exercises
-
-  devise_for :users
-  
-  
-   devise_scope :user do
-    authenticated :user do
-
-      root :to => 'homepage#index', as: :authenticated_root
-    end
-
-    unauthenticated :user do
-      root :to => 'devise/sessions#new', as: :unauthenticated_root
-    end
-    end
+Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -60,7 +39,7 @@ FLATS::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
