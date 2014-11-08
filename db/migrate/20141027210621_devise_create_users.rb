@@ -5,9 +5,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Basic info
       t.text :fname
       t.text :lname
-      t.integer :u_type
+      t.integer :u_type, null: false, default: 0
       t.text :gender
       t.datetime :bday
+      t.integer :weight
+      t.integer :height
+      t.integer :ex_score
+      t.integer :diet_score
+      t.integer :diet_fitness_flag
       t.decimal :weight
       t.decimal :height
       t.decimal :ex_score

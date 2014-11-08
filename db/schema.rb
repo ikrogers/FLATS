@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20141029194052) do
 
   create_table "exercise_managers", force: true do |t|
     t.integer  "user_id"
-    t.integer  "ex_id"
+    t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
