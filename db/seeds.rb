@@ -5,4 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(:email => "ikrogers@valdosta.edu",:fname=>"Ilya", :lname=>"Rogers", :phone => "9125802665", :carrier=>"Verizon", :password => "123123123", :password_confirmation => "123123123", :admin => true, :uberadmin => true)
+User.create(:email => "ikrogers@valdosta.edu",:fname=>"Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 2)
+User.create(:email => "ik@valdosta.edu",:fname=>"Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 1)
+User.create(:email => "ik2@valdosta.edu",:fname=>"Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3)
+
