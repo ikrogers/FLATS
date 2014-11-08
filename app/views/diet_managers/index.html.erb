@@ -1,0 +1,25 @@
+<h1>Listing diet_managers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @diet_managers.each do |diet_manager| %>
+      <tr>
+        <td><%= link_to 'Show', diet_manager %></td>
+        <td><%= link_to 'Edit', edit_diet_manager_path(diet_manager) %></td>
+        <td><%= link_to 'Destroy', diet_manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Diet manager', new_diet_manager_path %>

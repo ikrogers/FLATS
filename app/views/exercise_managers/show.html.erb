@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @exercise_manager.user.fname + " " + @exercise_manager.user.lname %>
+</p>
+
+<p>
+  <strong>Exercise:</strong>
+  <%= @exercise_manager.exercise.name %>
+</p>
+
+<%= link_to 'Edit', edit_exercise_manager_path(@exercise_manager) %> |
+<%= link_to 'Back', exercise_managers_path %>
