@@ -10,9 +10,13 @@ class ExercisesController < ApplicationController
   def show
     @exercise = Exercise.find(params[:id])
   end
+  
+  def index
+    @exercises = Exercise.all
+  end
 
   def create
-    @exercise = Exercise.create(diet_params)
+    @exercise = Exercise.create(exercise_params)
 
     respond_to do |format|
       if @exercise.save

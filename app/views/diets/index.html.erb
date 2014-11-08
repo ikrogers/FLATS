@@ -13,8 +13,7 @@
   </thead>
 
   <tbody>
-  	<%@diet = Diet.all%>
-    <% @diet.each do |diet| %>
+    <% @diets.each do |diet| %>
       <tr>
         <td><%= diet.name %></td>
         <td><%= diet.descr %></td>

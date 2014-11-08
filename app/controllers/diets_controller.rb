@@ -6,6 +6,10 @@ class DietsController < ApplicationController
   def edit
     @diet = Diet.find_by_id(params[:id])
   end
+  
+  def index
+    @diets = Diet.all
+  end
 
   def show
     @diet = Diet.find(params[:id])
