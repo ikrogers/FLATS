@@ -2,38 +2,7 @@ class ExercisesController < ApplicationController
   respond_to :html, :xml, :json
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @exercises = Exercise.all
-    respond_with(@exercises)
-  end
-
-  def show
-    respond_with(@exercise)
-  end
-
-  def new
-    @exercise = Exercise.new
-    respond_with(@exercise)
-  end
-
-  def edit
-  end
-
-  def create
-    @exercise = Exercise.new(exercise_params)
-    @exercise.save
-    respond_with(@exercise)
-  end
-
-  def update
-    @exercise.update(exercise_params)
-    respond_with(@exercise)
-  end
-
-  def destroy
-    @exercise.destroy
-    respond_with(@exercise)
-  end
+ 
 
   private
     def set_exercise

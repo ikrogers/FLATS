@@ -13,9 +13,10 @@
   </thead>
 
   <tbody>
-    <% @diets.each do |diet| %>
+  	<%@diet = Diet.all%>
+    <% @diet.each do |diet| %>
       <tr>
-        <td><%= diet.fName %></td>
+        <td><%= diet.name %></td>
         <td><%= diet.descr %></td>
         <td><%= diet.calories %></td>
         <td><%= link_to 'Show', diet %></td>

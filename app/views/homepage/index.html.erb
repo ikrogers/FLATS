@@ -1,10 +1,16 @@
 
 <h1>Welcome nubs!</h1>
 <%= button_to "Log Out", destroy_user_session_path, :method => :delete%>
-<% if current_user.u_type == 1%>
+<% if current_user.u_type == 2%>
 <h1>YOU ARE ADMIN</h1>
+<%= link_to "Diet Management", diets_path%><br>
+<%= link_to "Exersise Management", exercises_path%>
+
+<h1>User listing link goes here</h1>
+
+
 <%end%>
-<% if current_user.u_type == 1%>
+<% if current_user.u_type == 3%>
 <h1>YOU ARE Trainer?</h1>
 <%end%>
 
