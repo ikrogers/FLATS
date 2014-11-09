@@ -11,12 +11,10 @@
     </div>
   <% end %>
   
-  <div class="form-field">
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-  </div>
+
   <div class="form-field">
     <%= f.label :exercise_id %><br>
-    <%= f.collection_select(:exercise_id, Exercise.all, :id, :routine) %>
+    <%= select_tag(:se, options_for_select(Exercise.all.collect {|u| [u.name, u.id]}),{data:{live_search: "true"},:id=>"sel",:class => 'form-control',:placeholder=>"Click here to select all absent users. Leave blank if all present", :multiple => true, :name=>'project[sel_ex][]'}) %>
   </div>
   
   <div class="actions">
