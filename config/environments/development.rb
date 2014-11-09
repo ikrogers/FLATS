@@ -8,6 +8,8 @@ FLATS::Application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
+  #keep active admin css from conflicting with bootsrap css
+  config.assets.precompile += ['active_admin.css']
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
