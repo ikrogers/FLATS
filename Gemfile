@@ -25,7 +25,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-# Authentication
+# Authentication and administration
+gem 'devise_security_extension'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
 
 group :development do
