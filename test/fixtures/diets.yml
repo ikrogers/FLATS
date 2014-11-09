@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fName: MyString
+  descr: MyText
+  calories: 
+
+two:
+  fName: MyString
+  descr: MyText
+  calories: 
