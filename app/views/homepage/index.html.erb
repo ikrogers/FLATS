@@ -1,0 +1,33 @@
+
+<h1>Welcome nubs!</h1>
+<%= button_to "Log Out", destroy_user_session_path, :method => :delete%>
+<% if current_user.u_type == 2%>
+<h1>YOU ARE ADMIN</h1>
+<%= link_to "Diet Management", diets_path%><br>
+<%= link_to "Exersise Management", exercises_path%>
+<%= link_to "User Management", admin_root_path%>
+
+
+
+<%= link_to "MAKE MY WORKOUT TEMP", exercise_managers_path%><br>
+<%= link_to "MAKE MY DIET TEMP(NOT WORKING)", diet_managers_path%>
+
+
+
+<h1>User listing link goes here</h1>
+
+
+<%end%>
+<% if current_user.u_type == 3%>
+<h1>YOU ARE Trainer?</h1>
+<%= button_to "Diet Management", diets_path, :method => :get%><br>
+<%= button_to "Exersise Management", exercises_path, :method => :get%>
+<%end%>
+
+<% if current_user.u_type == 1%>
+
+<h1>YOU ARE Regular user</h1>
+
+<%end%>
+<h1>WELCOME! THIS IS A PAGE AUTHENTICATED USER LANDS ON</h1>
+
