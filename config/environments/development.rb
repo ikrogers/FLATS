@@ -30,4 +30,12 @@ FLATS::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            'testage123123@gmail.com',
+  password:             '78 chickens went on a walk and for got that Google uses CAPTCHA which drives girls up the wall',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
 end

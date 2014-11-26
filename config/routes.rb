@@ -2,6 +2,8 @@ FLATS::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  devise_for :users, controllers: { registrations: 'registrations'}
+
   resources :diet_managers
 
   resources :exercise_managers
@@ -10,7 +12,6 @@ FLATS::Application.routes.draw do
 
   resources :exercises
 
-  devise_for :users
   
   
    devise_scope :user do

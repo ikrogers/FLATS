@@ -47,7 +47,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find_by_id(params[:id])
     @exercise.destroy
     respond_to do |format|
-      format.html { redirect_to diets_url }
+      format.html { redirect_to exercises_url }
       format.json { head :no_content }
     end
   end
