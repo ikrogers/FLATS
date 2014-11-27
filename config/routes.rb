@@ -24,6 +24,13 @@ FLATS::Application.routes.draw do
       root :to => 'devise/sessions#new', as: :unauthenticated_root
     end
     end
+    
+    
+  get "/fitness_info" , :to => "exercise_managers#fitness_info", :as => 'fitness_info_input'
+ post "/fitness_score" , :to => "exercise_managers#fitness_score", :as => 'fitness_info_output'
+ 
+ get "/register_input" , :to => "homepage#register_input", :as => 'register_info_input'
+ post "/register_clear" , :to => "homepage#register_clear", :as => 'register_clear'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
