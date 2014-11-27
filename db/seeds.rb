@@ -164,3 +164,7 @@ Diet.create(:name => "Raisan Bran", :descr => "", :calories => 190)
 Diet.create(:name => "Fried Chicken Breast", :descr => "", :calories => 294)
 Diet.create(:name => "Broiled Chicken Breast", :descr => "", :calories => 194)
 Diet.create(:name => "Sour Cream & Onion Potato Chips", :descr => "", :calories => 0)
+
+
+
+

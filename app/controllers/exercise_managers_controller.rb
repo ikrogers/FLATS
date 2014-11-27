@@ -29,7 +29,33 @@ class ExerciseManagersController < ApplicationController
       format.json { head :no_content }
     end
   end
+<<<<<<< HEAD
 
+=======
+  
+  
+  
+  def fitness_info
+    
+  end
+  
+  def fitness_score
+    @user = current_user
+    @age = params[:age] rescue nil
+    @distance = params[:distance] rescue nil
+    if @distance != nil
+    @distance = (@distance.to_f / 0.00062137)
+    @vomax = ((@distance.to_f-505) / 45)
+    @user.update_attributes(:ex_score => @vomax)
+
+    end
+    respond_to do |format|
+      format.html{redirect_to authenticated_root_path, notice: 'Thank you for completing your fitness test!'}
+    end
+    
+  end
+  
+>>>>>>> e0e016c9ab9fea45dc5010ef29893938c8c748bc
   private
 
   def set_exercise_manager

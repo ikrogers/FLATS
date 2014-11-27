@@ -17,7 +17,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.decimal :height
       t.decimal :ex_score
       t.decimal :diet_score
+<<<<<<< HEAD
       t.integer :diet_fitness_flag
+=======
+>>>>>>> e0e016c9ab9fea45dc5010ef29893938c8c748bc
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

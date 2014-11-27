@@ -20,4 +20,6 @@ class User < ActiveRecord::Base
   def age
     return Time.now.year - bday.year
   end
+  
+  
 end
