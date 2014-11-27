@@ -29,10 +29,7 @@ class ExerciseManagersController < ApplicationController
       format.json { head :no_content }
     end
   end
-<<<<<<< HEAD
 
-=======
-  
   
   
   def fitness_info
@@ -55,7 +52,6 @@ class ExerciseManagersController < ApplicationController
     
   end
   
->>>>>>> e0e016c9ab9fea45dc5010ef29893938c8c748bc
   private
 
   def set_exercise_manager

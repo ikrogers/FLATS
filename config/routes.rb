@@ -31,6 +31,9 @@ FLATS::Application.routes.draw do
  
  get "/register_input" , :to => "homepage#register_input", :as => 'register_info_input'
  post "/register_clear" , :to => "homepage#register_clear", :as => 'register_clear'
+ 
+ get "/diet_input" , :to => "diet_managers#diet_input", :as => 'diet_info_input'
+ post "/diet_output" , :to => "diet_managers#diet_output", :as => 'diet_info_output'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -44,6 +44,28 @@ class DietManagersController < ApplicationController
       end
     end
   end
+  
+  def diet_input
+    
+  end
+  
+  def diet_output
+    @user = current_user
+    @weight = params[:weight] rescue nil
+    @height = params[:height] rescue nil
+    @weight = (@weight.to_f/0.45359237)
+    @height = (@height.to_f/0.39370)
+    if @user.gender = "Male"
+      @bmr = (88.362 + (13.397 * @weight.to_f) + (4.799 * @height.to_f) - (5.677 * @user.age.to_f)) 
+    else
+      @bmr = (447.593 + (9.247 * @weight.to_f) + (3.098 * @height.to_f) - (4.330 * @user.age.to_f))
+    end
+    @user.update_attributes()
+    
+    
+  end
+  
+  
 
   def destroy
     @diet_manager = DietManager.find_by_id(params[:id])
@@ -53,6 +75,8 @@ class DietManagersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
  
   private
     def set_diet_manager
