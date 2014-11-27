@@ -17,6 +17,20 @@
 				</div>
 			</div>
 					<%= form_tag(register_clear_path) do%>
+					div>
+						<%= label_tag "Enter your first name" %>
+						<br>
+						<i> ~ What should we call you?</i>
+						<br>
+						<%= text_field_tag :first,nil, :class => 'form-control'%>
+					</div>
+					div>
+						<%= label_tag "Enter your last name" %>
+						<br>
+						<i> ~ ...To address you more formally</i>
+						<br>
+						<%= text_field_tag :last,nil, :class => 'form-control'%>
+					</div>
 					<div>
 						<%= label_tag "Enter your Gender" %>
 						<br>
