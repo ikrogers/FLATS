@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127012324) do
+ActiveRecord::Schema.define(version: 20141109174845) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -77,11 +77,6 @@ ActiveRecord::Schema.define(version: 20141127012324) do
     t.datetime "updated_at"
   end
 
-  create_table "fitness_tests", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.text     "fname"
     t.text     "lname"
@@ -92,7 +87,7 @@ ActiveRecord::Schema.define(version: 20141127012324) do
     t.decimal  "height"
     t.decimal  "ex_score"
     t.decimal  "diet_score"
-    t.boolean  "diet_fitness_flag"
+    t.integer  "diet_fitness_flag"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

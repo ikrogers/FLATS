@@ -14,7 +14,7 @@ class HomepageController < ApplicationController
     @weight = params[:weight] rescue nil
     @birthday = params[:birth] rescue nil
     @first = params[:first] rescue nil
-    @first = params[:last] rescue nil
+    @last = params[:last] rescue nil
 
     if @gender != nil && @height != nil
       if @weight != nil && @birthday != nil

@@ -13,34 +13,38 @@
 			</p></a>
 			<div id="accordionThree" class="panel-collapse collapse">
 				<div class="panel-body">
-					<h4> Intructions for your physical test: </h4>
+					<h4> Intructions for diet score: </h4>
 					<p>
-						This test is relatively simple. You will require either a treadmill with distance readout or a track where you can estimate distance.
+						Please answer the following questions. Your weight and height as indicated on your profile will be updated
 					</p>
-					<p>
-						This test measures your relative fitness level based on your VOmax. In other words this is an aerobic estimation of your body's health level
-					</p>
-					<p>
-						Fill out your age and then please run/walk for 12 minutes and the record your distance (in miles so if you run 3 laps its .75 mile) in the field below after which clicking submit.
-					</p>
+
 
 				</div>
 			</div>
-					<%= form_tag(fitness_info_output_path) do%>
+					<%= form_tag(diet_info_output_path) do%>
 					<div>
-						<%= label_tag "Enter your Age" %>
+						<%= label_tag "Enter your weight(lbs)" %>
 						<br>
-						<i> ~How old are you?</i>
+						<i> ~Enter your crrent weight in pounds</i>
 						<br>
-						<%= text_field_tag :age,nil, :class => 'form-control'%>
+						<%= text_field_tag :weight,nil, :class => 'form-control'%>
 					</div>
 					<div>
-						<%= label_tag "Enter Distance" %>
+						<%= label_tag "Enter your height (in)" %>
 						<br>
-						<i> ~How far have you gone in 12 minutes?</i>
+						<i> ~Enter your current height in inches?</i>
 						<br>
-						<%= text_field_tag :weight, nil, class: 'form-control' %>
+						<%= text_field_tag :height, nil, class: 'form-control' %>
 					</div>
+					<div>
+						<%= label_tag "Indicate your physical activity level" %>
+						<br>
+						<i> ~(Replace with a dropdown) Use this to update your height. Please use inches ex: 6ft 1in = 73</i>
+						<br>
+						<%= select_tag(:activity, options_for_select([["Little to no exercise"],["Light exercise (1–3 days per week)"],["Moderate exercise (3–5 days per week)"],["Heavy exercise (6–7 days per week)"],["Very heavy exercise (twice per day, extra heavy workouts"]]), { :class => 'form-control', :name => 'project[activity][]',  :multiple => false})%>
+
+					</div>
+
 					<div class="actions">
 						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>
 						<%= link_to 'Abandon Test', authenticated_root_path, :class => 'btn btn-default' %>

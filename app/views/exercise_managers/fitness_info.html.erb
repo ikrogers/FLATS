@@ -26,20 +26,14 @@
 
 				</div>
 			</div>
-					<%= form_tag(diet_info_output_path) do%>
+					<%= form_tag(fitness_info_output_path) do%>
+					
 					<div>
-						<%= label_tag "Enter your weight" %>
+						<%= label_tag "Enter distance traveled in 12 minutes" %>
 						<br>
-						<i> ~(Replace with big select box) Use this to update your weight 150lbs = 150</i>
+						<i> ~How far have you gone in 12 minutes use miles ex 1.5?</i>
 						<br>
-						<%= text_field_tag :weight, nil, class: 'form-control' %>
-					</div>
-					<div>
-						<%= label_tag "Enter your height" %>
-						<br>
-						<i> ~(Replace with a dropdown) Use this to update your height. Please use inches ex: 6ft 1in = 73</i>
-						<br>
-						<%= text_field_tag :height, nil, class: 'form-control' %>
+						<%= text_field_tag :distance, nil, class: 'form-control' %>
 					</div>
 					<div class="actions">
 						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>

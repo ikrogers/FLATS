@@ -53,6 +53,7 @@ class DietManagersController < ApplicationController
     @user = current_user
     @weight = params[:weight] rescue nil
     @height = params[:height] rescue nil
+    @activity = params[:project][:activity] rescue nil
     @weight = (@weight.to_f/0.45359237)
     @height = (@height.to_f/0.39370)
     if @user.gender = "Male"
@@ -60,10 +61,28 @@ class DietManagersController < ApplicationController
     else
       @bmr = (447.593 + (9.247 * @weight.to_f) + (3.098 * @height.to_f) - (4.330 * @user.age.to_f))
     end
-    @user.update_attributes()
-    
-    
-  end
+
+    if (@activity.include? "Little") == true
+          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.2))
+
+    elsif (@activity.include? "Light exercise") == true
+          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.375))
+
+    elsif (@activity.include? "Moderate exercise") == true
+          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.55))
+
+    elsif (@activity.include? "Heavy exercise") == true
+          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.725))
+
+    elsif (@activity.include? "Very heavy") == true
+          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.9))
+
+    else
+    end
+    respond_to do |format|
+      format.html{redirect_to authenticated_root_path, notice: 'Thank you for completing your diet test!'}
+    end
+ end
   
   
 

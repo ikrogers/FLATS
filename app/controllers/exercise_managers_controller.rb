@@ -38,7 +38,6 @@ class ExerciseManagersController < ApplicationController
   
   def fitness_score
     @user = current_user
-    @age = params[:age] rescue nil
     @distance = params[:distance] rescue nil
     if @distance != nil
     @distance = (@distance.to_f / 0.00062137)

@@ -27,8 +27,12 @@
 <% if current_user.gender == nil || current_user.gender == ""%>
 <%= render '/homepage/register_input'%>
 <%else%>
-<h1>YOU ARE Regular user Your fitness score is <%=number_with_precision(current_user.ex_score.to_f, :precision => 2)%> which is <%=fit_rating%></h1>
-<%= link_to "Take Fitness test", fitness_info_input_path%>
+<h1>YOU ARE Regular user Your fitness score is <%=number_with_precision(current_user.ex_score.to_f, :precision => 2)%> which is <%=fit_rating%></h1><br>
+<h1>YOU ARE Regular user Your diet is <%=number_with_precision(current_user.diet_score.to_f, :precision => 2)%> number of kilocalories you must consume/day to keep your weight</h1><br>
+
+<%= link_to "Take Fitness test", fitness_info_input_path%><br>
+<%= link_to "Take Diet test", diet_info_input_path%><br>
+
 <%= link_to "MAKE MY WORKOUT TEMP", exercise_managers_path%><br>
 <%= link_to "MAKE MY DIET TEMP(NOT WORKING)", diet_managers_path%>
 <%end%>
