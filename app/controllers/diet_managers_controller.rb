@@ -1,6 +1,5 @@
 class DietManagersController < ApplicationController
   before_action :set_diet_manager, only: [:show, :edit, :update, :destroy]
-  
   def new
     @diet_manager = DietManager.new
   end
@@ -8,7 +7,7 @@ class DietManagersController < ApplicationController
   def edit
     @diet_manager = DietManager.find_by_id(params[:id])
   end
-  
+
   def index
     @diet_managers = DietManager.all
   end
@@ -26,8 +25,8 @@ class DietManagersController < ApplicationController
     end
 
     respond_to do |format|
-        format.html { redirect_to diet_managers_path }
-        format.json { render action: 'show', status: :created, location: @diet }
+      format.html { redirect_to diet_managers_path }
+      format.json { render action: 'show', status: :created, location: @diet }
     end
   end
 
@@ -44,47 +43,53 @@ class DietManagersController < ApplicationController
       end
     end
   end
-  
+
   def diet_input
-    
+
   end
-  
+
   def diet_output
     @user = current_user
     @weight = params[:weight] rescue nil
     @height = params[:height] rescue nil
-    @activity = params[:project][:activity] rescue nil
-    @weight = (@weight.to_f/0.45359237)
-    @height = (@height.to_f/0.39370)
+    @activity = params[:activity].to_s
+    @weight = (@weight.to_f*0.45359237)
+    @height = (@height.to_f*0.39370)
     if @user.gender = "Male"
-      @bmr = (88.362 + (13.397 * @weight.to_f) + (4.799 * @height.to_f) - (5.677 * @user.age.to_f)) 
+      @bmr = (88.362 + (13.397 * @weight.to_f) + (4.799 * @height.to_f) - (5.677 * @user.age.to_f))
     else
       @bmr = (447.593 + (9.247 * @weight.to_f) + (3.098 * @height.to_f) - (4.330 * @user.age.to_f))
     end
 
-    if (@activity.include? "Little") == true
-          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.2))
+    if @activity == "Little to no exercise"
+      @user.update_attributes(:weight => (@weight.to_f/0.45359237), :height => (@height.to_f/0.39370), :diet_score => (@bmr.to_f*1.2))
 
-    elsif (@activity.include? "Light exercise") == true
-          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.375))
+    elsif @activity == "Light exercise (1–3 days per week)"
 
-    elsif (@activity.include? "Moderate exercise") == true
-          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.55))
+      @user.update_attributes(:weight => (@weight.to_f/0.45359237), :height => (@height.to_f/0.39370), :diet_score => (@bmr.to_f*1.375))
+    elsif @activity == "Moderate exercise (3–5 days per week)"
+      @user.update_attributes(:weight => (@weight.to_f*0.45359237), :height => (@height.to_f*0.39370), :diet_score => (@bmr.to_f*1.55))
 
-    elsif (@activity.include? "Heavy exercise") == true
-          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.725))
+    elsif @activity == "Heavy exercise (6–7 days per week)"
+      @user.update_attributes(:weight => (@weight.to_f*0.45359237), :height => (@height.to_f*0.39370), :diet_score => (@bmr.to_f*1.725))
 
-    elsif (@activity.include? "Very heavy") == true
-          @user.update_attributes(:weight => @weight, :height => @height, :diet_score => (@bmr*1.9))
+    elsif @activity == "Very heavy exercise (twice per day, extra heavy workouts"
+      @user.update_attributes(:weight => (@weight.to_f*0.45359237), :height => (@height.to_f*0.39370), :diet_score => (@bmr.to_f*1.9))
 
     else
+      @flag = "error"
+
     end
-    respond_to do |format|
-      format.html{redirect_to authenticated_root_path, notice: 'Thank you for completing your diet test!'}
+    if @flag == "error"
+      respond_to do |format|
+        format.html{redirect_to authenticated_root_path, alert: 'Error has occured. Nothing was updated.'}
+      end
+    else
+      respond_to do |format|
+        format.html{redirect_to authenticated_root_path, notice: 'Thank you for completing your diet test!'}
+      end
     end
- end
-  
-  
+  end
 
   def destroy
     @diet_manager = DietManager.find_by_id(params[:id])
@@ -94,15 +99,14 @@ class DietManagersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  
- 
-  private
-    def set_diet_manager
-      @diet_manager = DietManager.find(params[:id])
-    end
 
-    def diet_manager_params
-      params.require(:diet_manager).permit(:user_id, :diet_id)
-    end
+  private
+
+  def set_diet_manager
+    @diet_manager = DietManager.find(params[:id])
+  end
+
+  def diet_manager_params
+    params.require(:diet_manager).permit(:user_id, :diet_id)
+  end
 end
