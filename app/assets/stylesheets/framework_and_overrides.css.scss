@@ -35,8 +35,13 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
+ 
   background-color: #eee;
   padding-bottom: 80px;
+  position: fixed; 
+  
+  /* Preserve aspet ratio */
+
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
@@ -80,3 +85,7 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
+#sdiv {
+  background-image: image-url("bike.jpg");
+  }
