@@ -1,0 +1,71 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Thank you! Please finish inputting your information, it will only take a second!</h3>
+	</div>
+	<div class="panel-body">
+		<div class="container">
+
+			<body>
+			<a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionThree">
+			<p class='text-muted'>
+				Detailed Instructions (Please read first if doing this first time!)
+
+			</p></a>
+			<div id="accordionThree" class="panel-collapse collapse">
+				<div class="panel-body">
+					<h4> Thank you! Please finish inputting your information, it will only take a second! </h4>
+				</div>
+			</div>
+					<%= form_tag(register_clear_path) do%>
+					div>
+						<%= label_tag "Enter your first name" %>
+						<br>
+						<i> ~ What should we call you?</i>
+						<br>
+						<%= text_field_tag :first,nil, :class => 'form-control'%>
+					</div>
+					div>
+						<%= label_tag "Enter your last name" %>
+						<br>
+						<i> ~ ...To address you more formally</i>
+						<br>
+						<%= text_field_tag :last,nil, :class => 'form-control'%>
+					</div>
+					<div>
+						<%= label_tag "Enter your Gender" %>
+						<br>
+						<i> ~(Replace with selection box) We need this to calculate your scores Male or Female</i>
+						<br>
+						<%= text_field_tag :gender,nil, :class => 'form-control'%>
+					</div>
+					<div>
+						<%= label_tag "Enter your date of birth" %>
+						<br>
+						<i> ~(Replace with dat/time picker) So we can send you birthday wishes! format: year-month-day ex: 1991-10-20</i>
+						<br>
+						<%= text_field_tag :birth,nil, :class => 'form-control'%>
+					</div>
+					<div>
+						<%= label_tag "Enter your weight" %>
+						<br>
+						<i> ~(Replace with big select box) Just for science! 150lbs = 150</i>
+						<br>
+						<%= text_field_tag :weight, nil, class: 'form-control' %>
+					</div>
+					<div>
+						<%= label_tag "Enter your height" %>
+						<br>
+						<i> ~(Replace with a dropdown) Please use inches ex: 6ft 1in = 73</i>
+						<br>
+						<%= text_field_tag :height, nil, class: 'form-control' %>
+					</div>
+					<div class="actions">
+						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>
+					</div>
+
+					<% end %>
+				</div>
+			</body>
+		</div>
+	</div>
+</div>

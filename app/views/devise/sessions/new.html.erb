@@ -1,110 +1,30 @@
-<!DOCTYPE html>
-<html class="full" lang="eng">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-    
+<img src="" alt="FLATS Mascot" class="img-thumbnail">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/full.css" rel="stylesheet">
-<!-- -->
-
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
-	<title>Responsive Web Mobile</title>
-
-<!-- -->
-
-    <style type="text/css">
-h2{
-    margin: 0;     
-    color: #fff;
-    padding-top: 10px;
-    font-size: 52px;
-    font-family: "trebuchet ms", sans-serif;    
-}
-p{
-	color: #333333;
-	font-size: 11;
-}
-.form{
-	width: 300px
-	background: #333333
-	height: 300px;
-}
-.item{
-    background: #333;    
-    text-align: center;
-    height: 300px !important;
-}
-.carousel{
-    margin-top: 50px;
-    height: 800px;
-}
-.bs-example{
-	margin: 20px;
-}
-.center-block(){
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-.containter{
-	width: 940px
-	.center-block();
-}
-
-.container-fluid{
-  background-image: -webkit-gradient(linear, 0% top, 100% top, from(#555555), to(#333333));
-  background-image: -webkit-linear-gradient(left, color-stop(#555555 0%), color-stop(#333333 100%));
-  background-image: -moz-linear-gradient(left, #555555 0%, #333333 100%);
-  background-image: linear-gradient(to right, #555555 0%, #333333 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff333333', GradientType=1);
-  width:100%;
-  height:50px;
-  float:left;
- }
-</style>
-
-
-
-</head>
-
-
-<body>
-
-<div class="container-fluid">
-
-
-<p class="text-center">
-<!--
-	Carousel
-	-->
-
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>First</h1>
-              <p>edit...</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-            </div>
-          </div>
+<div class="authform">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+    <h3>Sign in</h3>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <%- if devise_mapping.registerable? %>
+        <%= link_to 'Sign up', new_registration_path(resource_name), class: 'right'  %>
+      <% end -%>
+      <%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true, class: 'form-control', :tabIndex => 1 %>
+    </div>
+    <div class="form-group">
+      <%- if devise_mapping.recoverable? %>
+        <%= link_to "Forgot password?", new_password_path(resource_name), class: 'right' %>
+      <% end -%>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control', :tabIndex => 2 %>
+    </div>
+      <%= f.submit 'Sign in', :class => 'button right' %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="checkbox" style="width:150px">
+          <label>
+            <%= f.check_box :remember_me %> Remember me
+          </label>
         </div>
         <div class="item">
           

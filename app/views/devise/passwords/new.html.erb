@@ -1,12 +1,30 @@
-<div class="authform">
-  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
-    <h3>Forgot your password?</h3>
-    <p>We'll send password reset instructions.</p>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
-    </div>
-     <%= f.submit 'Reset Password', :class => 'button right' %>
-  <% end %>
+<div id="btg">
+	<div class="authform">
+		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
+		<h3 style="text-align: center;">Password Reset</h3><br>
+		<p>
+			We'll send password reset instructions.
+		</p>
+		<%= devise_error_messages! %>
+		<div class="form-group">
+			<%= f.label :email %>
+			<%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+		</div>
+		<%= f.submit 'Reset Password', :class => 'btn btn-primary center-block' %>
+		<% end %>
+	</div>
 </div>
+
+<style>
+	#btg {
+		background: url(/assets/bike.jpg) center no-repeat;
+		/* Preserve aspet ratio */
+				background-size: 100% auto;
+
+		left: 0;
+		right: 0;
+		position: fixed;
+		min-width: 100%;
+		min-height: 100%;
+	}
+</style>

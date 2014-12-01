@@ -2,6 +2,8 @@ FLATS::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  devise_for :users, controllers: { registrations: 'registrations'}
+
   resources :diet_managers
 
   resources :exercise_managers
@@ -10,7 +12,6 @@ FLATS::Application.routes.draw do
 
   resources :exercises
 
-  devise_for :users
   
   
    devise_scope :user do
@@ -23,6 +24,16 @@ FLATS::Application.routes.draw do
       root :to => 'devise/sessions#new', as: :unauthenticated_root
     end
     end
+    
+    
+  get "/fitness_info" , :to => "exercise_managers#fitness_info", :as => 'fitness_info_input'
+ post "/fitness_score" , :to => "exercise_managers#fitness_score", :as => 'fitness_info_output'
+ 
+ get "/register_input" , :to => "homepage#register_input", :as => 'register_info_input'
+ post "/register_clear" , :to => "homepage#register_clear", :as => 'register_clear'
+ 
+ get "/diet_input" , :to => "diet_managers#diet_input", :as => 'diet_info_input'
+ post "/diet_output" , :to => "diet_managers#diet_output", :as => 'diet_info_output'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
