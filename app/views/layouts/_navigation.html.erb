@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default" role="navigation">
+<%# navigation styled for Bootstrap 3.0 %>
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -22,7 +23,7 @@
         <li></li>
         <% if user_signed_in? %>
         <li class="dropdown">
-          <%= "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>".html_safe %><%= (current_user.fname+" "+current_user.lname) %><span class="caret"></span></a>
+          <%= "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>".html_safe %><%= current_user.fname+" "+current_user.lname %><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if current_user.u_type <= 1 %>
               <li class="divider"></li>
@@ -38,7 +39,7 @@
               <li><%= link_to "Exersise Management", exercises_path%></li>
             <% elsif current_user.u_type == 2 %>
               <li class="divider"></li>
-              <li><%= link_to "Administrative", admin_root_path%></li>
+              <li>&nbsp&nbsp&nbsp&nbspAdministrative</li>
               <li class="divider"></li>
               <li><%= link_to "Diet Management", diets_path %></li>
               <li><%= link_to "Exersise Management", exercises_path %></li>
