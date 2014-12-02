@@ -42,7 +42,9 @@
                         <tr><td class="info">Stats</td></tr>
                         <tr><td><p>Age: <%= current_user.age %></p>
                         <p>Weight: <%= current_user.weight %> lbs.</p>
-                        <p>Height: <%= current_user.height %> in.</p>
+                        <% @feet = current_user.height / 12 %>
+                        <% @inches = current_user.height % 12 %>
+                        <p>Height: <%= "%d'%d\"" % [@feet, @inches] %></p>
                         <p>Gender: <%= current_user.gender %></p>
                         <p>Fitness Score: <%= number_with_precision(current_user.ex_score.to_f, :precision => 2) %> <i><span class="
                             <%=  
@@ -73,8 +75,30 @@
                 <div class="col-xs-2 col-md-2"></div>
                 <div class="col-xs-8 col-md-8 has-bg">
                     <table class="table table-horizontal">
-                        <tr><td class="info">Diet <%= link_to "<span class='glyphicon glyphicon-heart-empty'></span> Take Diet Test".html_safe, diet_info_input_path %> <%= link_to "Make My Diet", diet_managers_path %></td></tr>
-                        <tr><td></td></tr>
+                        <% @cal_differential = current_user.diets.map {|d| d['calories']}.reduce(0, :+).round %>
+                        <tr><td class="info">Diet [<%= @cal_differential %>/<%= current_user.diet_score.round %>] ~<%= current_user.diet_score.round - @cal_differential %> calories remaining</td></tr>
+                        <tr><td>
+                            <% if current_user.diet_score.nil? %>
+                                <%= link_to "Take Diet Test".html_safe, diet_info_input_path, :class => "btn btn-danger" %>
+                            <% end %>
+                            <% if current_user.diets.count == 0 %>
+                                <%= link_to "Make My Diet", new_diet_manager_path, :class => "btn btn-default btn-small" %>
+                            <% elsif %>
+                                <div style="margin-left: 10%; width: 75%;">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                          <% current_user.diets.each do |d| %>
+                                            <tr>
+                                              <td style="width: 60%"><%= d.name %></td>
+                                              <td><%= link_to 'Show', d, :class => "btn btn-default" %></td>
+                                              <td><%= link_to 'Remove exercise', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                            </tr> 
+                                          <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% end %>
+                        </td></tr>
                     </table>
                 </div>
                 <div class="col-xs-2 col-md-2"></div>
@@ -83,8 +107,30 @@
                 <div class="col-xs-2 col-md-2"></div>
                 <div class="col-xs-8 col-md-8 has-bg">
                     <table class="table table-horizontal">
-                        <tr><td class="info">Fitness <%= link_to "Take Fitness Test", fitness_info_input_path %> <%= link_to "Make My Workout", exercise_managers_path %></td></tr>
-                        <tr><td></td></tr>
+                        <% @ex_differential = current_user.exercises.map {|d| d['calories']}.reduce(0, :+).round %>
+                        <tr><td class="info">Fitness <%= @ex_differential %> calories burned</td></tr>
+                        <tr><td>
+                            <% if current_user.ex_score.nil? %>
+                                <%= link_to "Take Fitness Test", fitness_info_input_path, :class => "btn btn-danger" %>
+                            <% end %>
+                            <% if current_user.exercises.count == 0 %>
+                                <%= link_to "Make My Workout", new_exercise_manager_path, :class => "btn btn-default btn-small" %>
+                            <% elsif %>
+                                <div style="margin-left: 10%; width: 75%;">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                          <% current_user.exercises.each do |e| %>
+                                            <tr>
+                                              <td style="width: 60%"><%= e.name %></td>
+                                              <td><%= link_to 'Show', e, :class => "btn btn-default" %></td>
+                                              <td><%= link_to 'Remove exercise', e, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                            </tr> 
+                                          <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% end %>
+                        </td></tr>
                     </table>
                 </div>
                 <div class="col-xs-2 col-md-2"></div>

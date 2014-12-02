@@ -4,9 +4,17 @@ class ExerciseManagersController < ApplicationController
   def index
     @exercise_managers = ExerciseManager.where(user_id: current_user.id)
   end
-
+  
   def new
     @exercise_manager = ExerciseManager.new
+  end
+  
+  def edit
+    @exercise_manager = ExerciseManager.find_by_id(params[:id])
+  end
+  
+  def show
+    @exercise_manager = ExerciseManager.find(params[:id])
   end
 
   def create
@@ -14,13 +22,25 @@ class ExerciseManagersController < ApplicationController
     @man.each do |e|
       @em = ExerciseManager.create(user_id: current_user.id, exercise_id: e.id)
     end
-
     respond_to do |format|
       format.html { redirect_to exercise_managers_path }
       format.json { render action: 'show', status: :created, location: @diet }
     end
   end
-
+  
+  def update
+    @exercise_manager = ExerciseManager.find_by_id(params[:id])
+    respond_to do |format|
+      if @exercise_manager.update(exercise_manager_params)
+        format.html { redirect_to @exercise_manager }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @exercise_manager.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   def destroy
     @em = ExerciseManager.find_by_id(params[:id])
     @em.destroy
@@ -29,11 +49,8 @@ class ExerciseManagersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  
   
   def fitness_info
-    
   end
   
   def fitness_score
@@ -48,7 +65,6 @@ class ExerciseManagersController < ApplicationController
     respond_to do |format|
       format.html{redirect_to authenticated_root_path, notice: 'Thank you for completing your fitness test!'}
     end
-    
   end
   
   private

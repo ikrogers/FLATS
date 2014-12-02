@@ -22,13 +22,20 @@
     </thead>
     <tbody>
         <% Exercise.all.each do |e| %>
-          <tr>
-              <td><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
-              <td><%= e.name %></td>
-              <td><center><%= e.intensity %></center></td>
-              <td><center><%= e.calories %></center></td>
-              <td><%= link_to "Show", e, :class => "btn btn-default" %></td>
-          </tr>
+        <% if ((fit_rating == "Extremely Poor" && e.intensity <= 1) ||
+          (fit_rating == "Below Average" && e.intensity <= 2) ||
+          (fit_rating == "Average" && e.intensity <= 3) ||
+          (fit_rating == "Above Average" && e.intensity <= 4) ||
+          (fit_rating == "Good" && e.intensity <= 5) ||
+          (fit_rating == "Excellent" && e.intensity <= 6)) %>
+            <tr>
+                <td><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
+                <td><%= e.name %></td>
+                <td><center><%= e.intensity %></center></td>
+                <td><center><%= e.calories %></center></td>
+                <td><%= link_to "Show", e, :class => "btn btn-default" %></td>
+            </tr>
+          <% end %>
         <% end %>
     </tbody>
   </table>

@@ -10,7 +10,6 @@
         <th>Exercise</th>
         <th></th>
         <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,8 +17,8 @@
         <tr>
           <td><%= exercise_manager.user.fullname %></td>
           <td><%= exercise_manager.exercise.name %></td>
-          <td><%= link_to 'Show', exercise_manager %></td>
-          <td class="danger"><%= link_to 'Destroy', exercise_manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', exercise_manager.exercise, :class => "btn btn-default" %></td>
+          <td><%= link_to 'Remove exercise', exercise_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
