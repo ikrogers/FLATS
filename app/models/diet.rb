@@ -1,4 +1,4 @@
 class Diet < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :exercise
+    has_many :diet_managers
+    has_many :users, through: :diet_managers
 end

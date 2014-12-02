@@ -19,8 +19,13 @@ class DietManagersController < ApplicationController
   def create
     @man = Diet.find(params[:project][:sel_diet]) rescue nil
     if @man != nil
-      @man.each do |e|
-        @em = DietManager.create(user_id: current_user.id, diet_id: e.id) rescue nil
+      sum = @man.map {|d| d['calories']}.reduce(0, :+)
+      if sum < current_user.diet_score.to_f
+        flash[:alert] = "You cannot exceed your maximum alotted calorie consumption."
+      else
+        @man.each do |e|
+          @em = DietManager.create(user_id: current_user.id, diet_id: e.id) rescue nil
+        end
       end
     end
 

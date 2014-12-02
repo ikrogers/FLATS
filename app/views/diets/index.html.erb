@@ -1,31 +1,31 @@
-<h1>Listing diets</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Fname</th>
-      <th>Descr</th>
-      <th>Calories</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @diets.each do |diet| %>
+<div style="width: 60%; margin-left: 20%;">
+  <center>
+    <h3>Listing diets</h3>
+  </center>
+  <table>
+    <thead>
       <tr>
-        <td><%= diet.name %></td>
-        <td><%= diet.descr %></td>
-        <td><%= diet.calories %></td>
-        <td><%= link_to 'Show', diet %></td>
-        <td><%= link_to 'Edit', edit_diet_path(diet) %></td>
-        <td><%= link_to 'Destroy', diet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Fname</th>
+        <th>Descr</th>
+        <th>Calories</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @diets.each do |diet| %>
+        <tr>
+          <td><%= diet.name %></td>
+          <td><%= diet.descr %></td>
+          <td><%= diet.calories %></td>
+          <td><%= link_to 'Show', diet %></td>
+          <td><%= link_to 'Edit', edit_diet_path(diet) %></td>
+          <td><%= link_to 'Destroy', diet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
-
-<%= link_to 'New Diet', new_diet_path %>
+  <%= link_to 'New Diet', new_diet_path, :class => "btn btn-default" %>
+</div>
