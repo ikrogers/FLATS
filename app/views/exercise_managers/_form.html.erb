@@ -27,7 +27,8 @@
               <td><%= e.name %></td>
               <td><center><%= e.intensity %></center></td>
               <td><center><%= e.calories %></center></td>
-              <td><%= link_to 'Show', e, :class => "button" %></td>
+              <!-- Button trigger modal -->
+              <td><%= link_to "Show", e, :class => "btn btn-default" %></td>
           </tr>
         <% end %>
     </tbody>
@@ -37,3 +38,8 @@
     <%= f.submit "Add exercises" %>
   </div>
 <% end %>
+<script type="text/javascript">
+$('#hide').on('click', function () {
+    $('#popup-youtube-player')[0].contentWindow.postMessage('{"event":"command","func":"' +'stopVideo' + '","args":""}', '*');
+});
+</script>

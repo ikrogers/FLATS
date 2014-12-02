@@ -1,18 +1,25 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Fname:</strong>
-  <%= @diet.name %>
-</p>
-
-<p>
-  <strong>Descr:</strong>
-  <%= @diet.descr %>
-</p>
-
-<p>
-  <strong>Calories:</strong>
-  <%= @diet.calories %>
-</p>
-
-<%= link_to 'Edit', edit_diet_path(@diet) %> |
-<%= link_to 'Back', diets_path %>
+<div class="encapsulate">
+  <center>
+    <p>
+      <strong>Food:</strong>
+      <%= @diet.name %>
+    </p>
+  </center>
+  
+  <p>
+    <strong>Description:</strong>
+    <%= @diet.descr %>
+  </p>
+  
+  <p>
+    <strong>Calories:</strong>
+    <%= @diet.calories %>
+  </p>
+  <center>
+    <% if current_user.u_type > 1  %>
+      <%= link_to 'Edit', edit_diet_path(@diet) %> |
+    <% end %>
+    <%= link_to 'Back', diets_path %>
+  </center>
+</div>

@@ -22,7 +22,8 @@ Exercise.create(
         
         3.) Then afterwards have your partner pull back on your elbows again but easily this time to help stretch out the chest muscles.", 
     :calories => 180, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "xEai_DxD-Nw")
 
 Exercise.create(
     :name => "Ankle Circle", 
@@ -34,27 +35,31 @@ Exercise.create(
         
         3.) Reverse the direction (counter-clockwise) and switch feet.", 
     :calories => 60, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "jsy41du9I5g")
 
 Exercise.create(
     :name => "Walking (2mph/30minutes)", 
     :descr => "Running is one of the most common and effecient forms of exercise for muscle toning, weight loss and keeping your lungs and body in shape.
         Running improves on conditioning the body, endurance, stamina, speed, strength in the legs and core, as well as improving one's posture.", 
     :calories => 90, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "ndVjwkaLGDk")
 
 Exercise.create(
     :name => "Running (3mph/30minutes)", 
     :descr => "Running is one of the most common and effect forms of exercise for muscle toning, weight loss and keeping your lungs and body in shape.
         Running improves on conditioning the body, endurance, stamina, speed, strength in the legs and core, as well as improving one's posture.", 
     :calories => 120, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "wRkeBVMQSgg")
 
 Exercise.create(
     :name => "Aerobics (moderate/30minutes)", 
     :descr => "Aerobic Exercise focuses upon cardiovascular fitness, muscle strength and endurance by performing aerobic workouts.", 
     :calories => 232, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "QQSYo_pC-QA")
     
 Exercise.create(
     :name => "Cat Stretch", 
@@ -66,7 +71,8 @@ Exercise.create(
         
         4.) Repeat for as long and many reps as desired.", 
     :calories => 100, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "ZiNXOE5EsZw")
     
 Exercise.create(
     :name => "Bench Dip", 
@@ -80,7 +86,8 @@ Exercise.create(
         
         5.) Repeat for as many reps and sets as desired.", 
     :calories => 290, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "c3ZGl4pAwZ4")
     
 Exercise.create(
     :name => "Abdominal Pendulum", 
@@ -92,38 +99,44 @@ Exercise.create(
         
         4.) Repeat for as many reps and sets as desired.", 
     :calories => 180, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "bwV3-gTy4Aw")
     
 Exercise.create(
     :name => "Aerobic", 
     :descr => "Aerobic Exercise focuses upon cardiovascular fitness, muscle strength and endurance by performing aerobic workouts.", 
     :calories => 230, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "")
     
 Exercise.create(
     :name => "Pilates", 
     :descr => "Pilates are an exercise that focus upon developing strength through the core of the body as well as increasing flexibility and coordination.", 
     :calories => 180, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "lCg_gh_fppI")
     
 Exercise.create(
     :name => "Mountain Biking", 
     :descr => "Mountain biking is a sport that consists of riding outdoors, mostly off-road courses and over rough terrain.
         It requires stamina, core strength, endurance, balance, coordination and handling skills.", 
     :calories => 240, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "F1QrJ3_5MyU")
     
 Exercise.create(
     :name => "Jumping Rope", 
     :descr => "Jump rope is a great cardiovascular exercise that helps burn a significant amount of calories through repeated jumping motion and keeping the body moving.", 
     :calories => 200, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "60Ug5rnTYfk")
     
 Exercise.create(
     :name => "Indoor Cycling", 
     :descr => "Indoor cycling is a form of exercise that focuses on endurance, stamina, strength, intensity, intervals and recovery.", 
     :calories => 200, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "qrwfQ9Qwai4")
     
 Exercise.create(
     :name => "Dragon Flag", 
@@ -141,7 +154,8 @@ Exercise.create(
         
         7.) Repeat for as many reps and sets as desired.", 
     :calories => 320, 
-    :intensity => 3)
+    :intensity => 3,
+    :video => "CavZeuCS56g")
 
 Exercise.create(
     :name => "Hand Stand Push Up", 
@@ -155,7 +169,8 @@ Exercise.create(
         
         5.) Repeat for as many reps and sets as desired.", 
     :calories => 200, 
-    :intensity => 3)
+    :intensity => 3,
+    :video => "RAO7OG077Ac")
 
 Diet.create(:name => "Apple (Golden Delicious)", :descr => "", :calories => 62)
 Diet.create(:name => "Orange", :descr => "", :calories => 45)
