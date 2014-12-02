@@ -1,3 +1,41 @@
 // Place all the styles related to the homepage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.widener {
+     min-width: 300px;
+}
+
+.bg{
+    background: url('http://hdwallpaper.freehdw.com/0001/nature-landscapes_hdwallpaper_simple-bamboo-iii_1582.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.has-bg {
+     background: rgba(255, 255, 255, 0.50);
+     color: rgb(0,0,0);
+}
+
+.excellent {
+     color: rgb(0,255,255);
+}
+
+.good {
+     color: rgb(0,255,0);
+}
+
+.above-average {
+     color: rgb(125,255,0);
+}
+
+.average {
+     color: rgb(255,255,0);
+}
+
+.below-average {
+     color: rgb(255,128,0);
+}
+
+.poor {
+     color: rgb(255,0,0);
+}

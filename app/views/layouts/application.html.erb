@@ -10,12 +10,8 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <nav>
-      <%= render 'layouts/navigation' %>
-    </nav>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <%= render 'layouts/navigation_clinton' %>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
   </body>
 </html>

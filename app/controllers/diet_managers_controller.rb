@@ -63,19 +63,14 @@ class DietManagersController < ApplicationController
 
     if @activity == "Little to no exercise"
       @user.update_attributes(:weight => (@weight.to_f/0.45359237), :height => (@height.to_f/0.39370), :diet_score => (@bmr.to_f*1.2))
-
     elsif @activity == "Light exercise (1–3 days per week)"
-
       @user.update_attributes(:weight => (@weight.to_f/0.45359237), :height => (@height.to_f/0.39370), :diet_score => (@bmr.to_f*1.375))
     elsif @activity == "Moderate exercise (3–5 days per week)"
       @user.update_attributes(:weight => (@weight.to_f*0.45359237), :height => (@height.to_f*0.39370), :diet_score => (@bmr.to_f*1.55))
-
     elsif @activity == "Heavy exercise (6–7 days per week)"
       @user.update_attributes(:weight => (@weight.to_f*0.45359237), :height => (@height.to_f*0.39370), :diet_score => (@bmr.to_f*1.725))
-
     elsif @activity == "Very heavy exercise (twice per day, extra heavy workouts"
       @user.update_attributes(:weight => (@weight.to_f*0.45359237), :height => (@height.to_f*0.39370), :diet_score => (@bmr.to_f*1.9))
-
     else
       @flag = "error"
 

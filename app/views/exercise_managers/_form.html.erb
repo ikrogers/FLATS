@@ -10,14 +10,30 @@
       </ul>
     </div>
   <% end %>
-  
-
-  <div class="form-field">
-    <%= f.label :exercise_id %><br>
-    <%= select_tag(:esel, options_for_select(Exercise.all.collect {|u| [u.name, u.id]}),{data:{live_search: "true"},:id=>"sel",:class => 'form-control',:placeholder=>"Click here to select all absent users. Leave blank if all present", :multiple => true, :name=>'project[sel_ex][]'}) %>
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <td></td>
+        <td>Exercise</td>
+        <td><center>Intensity</center></td>
+        <td><center>Calories Burned</center></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+        <% Exercise.all.each do |e| %>
+          <tr>
+              <td><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
+              <td><%= e.name %></td>
+              <td><center><%= e.intensity %></center></td>
+              <td><center><%= e.calories %></center></td>
+              <td><%= link_to 'Show', e, :class => "button" %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add exercises" %>
   </div>
 <% end %>

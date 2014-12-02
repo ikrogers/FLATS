@@ -8,17 +8,19 @@
 User.create(:email => "ikrogers@valdosta.edu", :fname => "Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 2)
 User.create(:email => "ik@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 1)
 User.create(:email => "ik2@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3)
-User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "789789789", :password_confirmation => "789789789", :u_type => 2)
+User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 2)
+User.create(:email => "clint.cauley@gmail.com", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 1)
+User.create(:email => "tcauley@usg.edu", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 3)
 
 Exercise.create(
     :name => "Behind Head Chest Stretch", 
-    :descr => "1.) In this stretch you will need a partner behind you to assist.
+    :descr => "In this stretch you will need a partner behind you to assist.
         
-        2.) Start off by sitting upright on the floor with your partner behind you, placing your hands behind your head and legs extended out in front of you with a slight bend in the kees.
+        1.) Start off by sitting upright on the floor with your partner behind you, placing your hands behind your head and legs extended out in front of you with a slight bend in the kees.
         
-        3.) Have your partner hold your elbows, then try and pull your elbows forward from behind your head for about 15 to 30 seconds then release.
+        2.) Have your partner hold your elbows, then try and pull your elbows forward from behind your head for about 15 to 30 seconds then release.
         
-        4.) Then afterwards have your partner pull back on your elbows again but easily this time to help stretch out the chest muscles.", 
+        3.) Then afterwards have your partner pull back on your elbows again but easily this time to help stretch out the chest muscles.", 
     :calories => 180, 
     :intensity => 1)
 
@@ -36,7 +38,7 @@ Exercise.create(
 
 Exercise.create(
     :name => "Walking (2mph/30minutes)", 
-    :descr => "Running is one of the most common and effect forms of exercise for muscle toning, weight loss and keeping your lungs and body in shape.
+    :descr => "Running is one of the most common and effecient forms of exercise for muscle toning, weight loss and keeping your lungs and body in shape.
         Running improves on conditioning the body, endurance, stamina, speed, strength in the legs and core, as well as improving one's posture.", 
     :calories => 90, 
     :intensity => 1)
@@ -57,8 +59,11 @@ Exercise.create(
 Exercise.create(
     :name => "Cat Stretch", 
     :descr => "1.) Start off kneeling down on the floor with your feet extended behind you and your hands flat on the floor at shoulder level.
+    
         2.) Slowly pull your belly in and round out your back, letting your head drop to the floor until you feel a stretch in your back muscles.
+        
         3.) Hold this position for 15 to 30 seconds then return back to the starting position.
+        
         4.) Repeat for as long and many reps as desired.", 
     :calories => 100, 
     :intensity => 1)
@@ -110,7 +115,7 @@ Exercise.create(
     
 Exercise.create(
     :name => "Jumping Rope", 
-    :descr => "Jump rope is a great cardio exercise that helps burn a significant amount of calories through repeated jumping motion and keeping the body moving.", 
+    :descr => "Jump rope is a great cardiovascular exercise that helps burn a significant amount of calories through repeated jumping motion and keeping the body moving.", 
     :calories => 200, 
     :intensity => 2)
     
@@ -140,15 +145,15 @@ Exercise.create(
 
 Exercise.create(
     :name => "Hand Stand Push Up", 
-    :descr => "2.) Slowly kick your feet up against the wall, still keeping your arms straight, and walk your way up the wall with your feet so that your legs and arms are fully extended.
+    :descr => "1.) Slowly kick your feet up against the wall, still keeping your arms straight, and walk your way up the wall with your feet so that your legs and arms are fully extended.
         
-        3.) Make sure that your body is straight and balanced before you move onto the next step.
+        2.) Make sure that your body is straight and balanced before you move onto the next step.
         
-        4.) Slowly, through your shoulders, lower yourself towards the ground so that your head almost touches the floor and you feel a stretch in your shoulders and upper body.
+        3.) Slowly, through your shoulders, lower yourself towards the ground so that your head almost touches the floor and you feel a stretch in your shoulders and upper body.
         
-        5.) Push yourself back up until your elbows are near locked.
+        4.) Push yourself back up until your elbows are near locked.
         
-        6.) Repeat for as many reps and sets as desired.", 
+        5.) Repeat for as many reps and sets as desired.", 
     :calories => 200, 
     :intensity => 3)
 

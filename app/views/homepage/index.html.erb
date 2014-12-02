@@ -1,40 +1,98 @@
+<% if user_signed_in? %>
+<% if current_user.u_type == 2 %>
+    <!-- Administrator view -->
+    <h3>Move all these navigation links to navigation...</h3>
+    <%= link_to "Diet Management", diets_path %><br />
+    <%= link_to "Exersise Management", exercises_path %><br />
+    <%= link_to "User Management", admin_root_path %><br />
+    <%= link_to "Make My Workout", exercise_managers_path %><br />
+    <%= link_to "Make My Diet", diet_managers_path %>
+    
+<% elsif current_user.u_type == 3 %>
+<!-- Trainer view -->
+    
+    <h3>Move all these navigation links to navigation...</h3>
+    <%= button_to "Diet Management", diets_path, :method => :get %><br />
+    <%= button_to "Exersise Management", exercises_path, :method => :get %>
+    
+<% elsif current_user.u_type == 1 %>
+    <!-- User view -->
+    
+    <% if current_user.gender.nil? || current_user.gender == "" %>
+        <!-- First time login (Or profile not filled out) -->
+        
+        <%= render '/homepage/register_input' %>
+        
+    <% else %>
+        <!-- Profile extras are completed -->
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-2 col-md-2"></div>
+                <div class="col-xs-4 col-md-4 has-bg">
+                    <h2>Welcome, <%= current_user.fullname %>!</h2>
+                    <h3><%= Time.now.strftime "%m/%d/%Y | %H:%M" %></h3>
+                </div>
+                <div class="col-xs-4 col-md-4 has-bg"><h2>&nbsp</h2><h3>&nbsp</h3></div>
+                <div class="col-xs-2 col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-md-2"></div>
+                <div class="col-xs-8 col-md-8 has-bg">
+                    <table class="table table-horizontal">
+                        <tr><td class="info">Stats</td></tr>
+                        <tr><td><p>Age: <%= current_user.age %></p>
+                        <p>Weight: <%= current_user.weight %> lbs.</p>
+                        <p>Height: <%= current_user.height %> in.</p>
+                        <p>Gender: <%= current_user.gender %></p>
+                        <p>Fitness Score: <%= number_with_precision(current_user.ex_score.to_f, :precision => 2) %> <i><span class="
+                            <%=  
+                            if fit_rating == "Above Average"
+                                "above-average"
+                            elsif fit_rating == "Below Average"
+                                "below-average"
+                            else
+                                fit_rating.downcase
+                            end
+                            %>"><%= fit_rating.downcase %></span></i></p>
+                        <p>Diet Score: <%= number_with_precision(current_user.diet_score.to_f, :precision => 2) %> <i>kilocalories must be consumed to maintain current weight</i></p></td></tr>
+                    </table>
+                </div>
+                <div class="col-xs-2 col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-md-2"></div>
+                <div class="col-xs-8 col-md-8 has-bg">
+                    <table class="table table-horizontal">
+                        <tr><td class="info">Charts</td></tr>
+                        <tr><td></td></tr>
+                    </table>
+                </div>
+                <div class="col-xs-2 col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-md-2"></div>
+                <div class="col-xs-8 col-md-8 has-bg">
+                    <table class="table table-horizontal">
+                        <tr><td class="info">Diet <%= link_to "Take Diet Test", diet_info_input_path %> <%= link_to "Make My Diet", diet_managers_path %></td></tr>
+                        <tr><td></td></tr>
+                    </table>
+                </div>
+                <div class="col-xs-2 col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-md-2"></div>
+                <div class="col-xs-8 col-md-8 has-bg">
+                    <table class="table table-horizontal">
+                        <tr><td class="info">Fitness <%= link_to "Take Fitness Test", fitness_info_input_path %> <%= link_to "Make My Workout", exercise_managers_path %></td></tr>
+                        <tr><td></td></tr>
+                    </table>
+                </div>
+                <div class="col-xs-2 col-md-2"></div>
+            </div>
+        </div>
+    <% end %>
+<% else %>
+<!-- Somehow an unregistered user has reached this page -->
 
-<%= button_to "Log Out", destroy_user_session_path, :method => :delete%>
-<% if current_user.u_type == 2%>
-<h1>YOU ARE ADMIN</h1>
-<%= link_to "Diet Management", diets_path%><br>
-<%= link_to "Exersise Management", exercises_path%>
-<%= link_to "User Management", admin_root_path%>
-
-
-
-<%= link_to "MAKE MY WORKOUT TEMP", exercise_managers_path%><br>
-<%= link_to "MAKE MY DIET TEMP(NOT WORKING)", diet_managers_path%>
-
-
-
-<h1>User listing link goes here</h1>
-
-
-<%end%>
-<% if current_user.u_type == 3%>
-<h1>YOU ARE Trainer?</h1>
-<%= button_to "Diet Management", diets_path, :method => :get%><br>
-<%= button_to "Exersise Management", exercises_path, :method => :get%>
-<%end%>
-
-<% if current_user.u_type == 1%>
-<% if current_user.gender == nil || current_user.gender == ""%>
-<%= render '/homepage/register_input'%>
-<%else%>
-<h1>YOU ARE Regular user Your fitness score is <%=number_with_precision(current_user.ex_score.to_f, :precision => 2)%> which is <%=fit_rating%></h1><br>
-<h1>YOU ARE Regular user Your diet is <%=number_with_precision(current_user.diet_score.to_f, :precision => 2)%> number of kilocalories you must consume/day to keep your weight</h1><br>
-
-<%= link_to "Take Fitness test", fitness_info_input_path%><br>
-<%= link_to "Take Diet test", diet_info_input_path%><br>
-
-<%= link_to "MAKE MY WORKOUT TEMP", exercise_managers_path%><br>
-<%= link_to "MAKE MY DIET TEMP(NOT WORKING)", diet_managers_path%>
-<%end%>
-<%end%>
-
+<% end %>
+<% end %>

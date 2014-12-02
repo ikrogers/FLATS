@@ -3,6 +3,6 @@ class Exercise < ActiveRecord::Base
     has_many :users, through: :exercise_managers
     
     def routine
-        "#{name}"
+        "#{name} #{intensity} #{calories}"
     end
 end

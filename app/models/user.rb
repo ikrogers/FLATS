@@ -21,5 +21,7 @@ class User < ActiveRecord::Base
     return Time.now.year - bday.year
   end
   
-  
+  def fullname
+    "#{fname} #{lname}"
+  end
 end

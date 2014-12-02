@@ -32,7 +32,7 @@ class HomepageController < ApplicationController
           end
         end
       end
-      format.html{redirect_to authenticated_root_path, alert: 'An error occured... probably some of the fiels are not filled out correctly'}
+      format.html{redirect_to authenticated_root_path, alert: 'An error occured... probably some of the fields are not filled out correctly'}
     end
 
   end
