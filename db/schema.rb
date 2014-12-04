@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20141109174845) do
     t.text     "descr",      default: "",  null: false
     t.decimal  "calories",   default: 0.0, null: false
     t.integer  "intensity",  default: 0,   null: false
+    t.string   "video",      default: "",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,7 +88,6 @@ ActiveRecord::Schema.define(version: 20141109174845) do
     t.decimal  "height"
     t.decimal  "ex_score"
     t.decimal  "diet_score"
-
     t.integer  "diet_fitness_flag",      default: 0,  null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

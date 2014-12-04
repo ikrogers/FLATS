@@ -11,8 +11,10 @@
   </head>
   <body>
   	<%if params[:action] != 'new' && params[:controller] != 'sessions'%>
+    <% if current_user.gender != nil%>
     <%= render 'layouts/navigation_clinton' %>
     <%= render 'layouts/messages' %>
+    <%end%>
     <%end%>
     <%= yield %>
   </body>
