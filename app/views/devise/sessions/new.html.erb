@@ -18,8 +18,8 @@
 			<div class="slide-1"></div>
 			<div class="hero">
 				<hgroup>
-					<h1>First</h1>
-					<h3>Description...........1</h3>
+					<h1>Log In!</h1>
+					<%=render 'login'%>
 				</hgroup>
 				<button class="btn btn-hero btn-lg" role="button">
 					See all features
@@ -42,10 +42,9 @@
 			<div class="slide-3"></div>
 			<div class="hero">
 				<hgroup>
-					<h1>Third</h1>
-					<h3>Description...........3</h3>
+					<h1>Register!</h1>
+					<%=render 'devise/registrations/regnew'%>
 				</hgroup>
-				<%= button_to "HURRR", new_user_registration_path, method: :get, class: "btn btn-hero btn-lg" %>
 			</div>
 		</div>
 	</div>
