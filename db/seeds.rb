@@ -9,7 +9,7 @@ User.create(:email => "ikrogers@valdosta.edu", :fname => "Ilya", :lname=>"Rogers
 User.create(:email => "ik@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 1)
 User.create(:email => "ik2@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3)
 User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 2)
-User.create(:email => "clint.cauley@gmail.com", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 1)
+User.create(:email => "clint.cauley@gmail.com", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :diet_fitness_flag => 1)
 User.create(:email => "tcauley@usg.edu", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 3)
 
 Exercise.create(

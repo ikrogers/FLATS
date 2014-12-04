@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :height
       t.integer :ex_score
       t.integer :diet_score
-      t.integer :diet_fitness_flag
+      t.integer :diet_fitness_flag, null: false, default: 0
       t.decimal :weight
       t.decimal :height
       t.decimal :ex_score
