@@ -18,12 +18,10 @@
 			<div class="slide-1"></div>
 			<div class="hero">
 				<hgroup>
-					<h1>Log In!</h1>
+					<h2 style="text-align: center">Log In!</h2>
 					<%=render 'login'%>
 				</hgroup>
-				<button class="btn btn-hero btn-lg" role="button">
-					See all features
-				</button>
+
 			</div>
 		</div>
 		<div class="item slides">
@@ -41,10 +39,10 @@
 		<div class="item slides">
 			<div class="slide-3"></div>
 			<div class="hero">
-				<hgroup>
-					<h1>Register!</h1>
+				<div>
+					<h2 style="text-align: center">Register!</h2>
 					<%=render 'devise/registrations/regnew'%>
-				</hgroup>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -76,14 +74,14 @@
 		/*background-color: #f39c12;*/
 		width: 30px;
 		height: 30px;
-		opacity: .3;
-		background: white;
+		opacity: .5;
+		background: grey;
 	}
 	.fade-carousel .carousel-indicators > li.active {
 		width: 39px;
 		height: 20px;
 		opacity: 1;
-		background: white;
+		background: grey;
 	}
 
 	/********************************/
@@ -91,11 +89,10 @@
 	/********************************/
 	.hero {
 		position: absolute;
-		top: 50%;
+		top: 40%;
 		left: 50%;
 		z-index: 10;
 		color: #fff;
-		text-align: center;
 		text-transform: uppercase;
 		text-shadow: 1px 1px 0 rgba(0,0,0,.75);
 		-webkit-transform: translate3d(-50%,-50%,0);
