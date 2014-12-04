@@ -6,7 +6,7 @@ class HomepageController < ApplicationController
   def register_input
 
   end
-
+  
   def register_clear
     @user = current_user
     @gender = params[:gender] rescue nil

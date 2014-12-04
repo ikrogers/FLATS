@@ -10,11 +10,32 @@
     
 <% elsif current_user.u_type == 3 %>
 <!-- Trainer view -->
-    
-    <h3>Move all these navigation links to navigation...</h3>
-    <%= button_to "Diet Management", diets_path, :method => :get %><br />
-    <%= button_to "Exersise Management", exercises_path, :method => :get %>
-    
+<!-- Trainer can: if user wants to be coached, trainer can see users and coach -->
+    <div style="width: 60%; margin-left: 20%;">
+        <center>
+            <h3>Trainees</h3>
+        </center>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Training requested</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% User.all.each do |u| %>
+                   <% if u.diet_fitness_flag > 0 %>
+                        <tr>
+                            <td><%= u.fullname %></td>
+                            <td><%= link_to 'Train exercise', new_exercise_manager_path(:user => u), :class => 'btn btn-default' %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
 <% elsif current_user.u_type == 1 %>
     <!-- User view -->
     
@@ -66,7 +87,14 @@
                 <div class="col-xs-8 col-md-8 has-bg">
                     <table class="table table-horizontal">
                         <tr><td class="info">Charts</td></tr>
-                        <tr><td></td></tr>
+                        <tr>
+                            <td>
+                                <% if current_user.exercises.count > 0 || current_user.diets.count > 0 %>
+                                    <span style="float: left; width: 50%;"><%= pie_chart current_user.exercises.group(:name).sum(:calories)  %></span>
+                                    <span style="float: left; width: 50%;"><%= pie_chart current_user.diets.group(:name).sum(:calories) %></span>
+                                <% end %>
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="col-xs-2 col-md-2"></div>
@@ -75,8 +103,7 @@
                 <div class="col-xs-2 col-md-2"></div>
                 <div class="col-xs-8 col-md-8 has-bg">
                     <table class="table table-horizontal">
-                        <% @cal_differential = current_user.diets.map {|d| d['calories']}.reduce(0, :+).round %>
-                        <tr><td class="info">Diet [<%= @cal_differential %>/<%= current_user.diet_score.round %>] ~<%= current_user.diet_score.round - @cal_differential %> calories remaining</td></tr>
+                        <tr><td class="info">Diet </td></tr>
                         <tr><td>
                             <% if current_user.diet_score.nil? %>
                                 <%= link_to "Take Diet Test".html_safe, diet_info_input_path, :class => "btn btn-danger" %>
@@ -91,7 +118,7 @@
                                             <tr>
                                               <td style="width: 60%"><%= d.name %></td>
                                               <td><%= link_to 'Show', d, :class => "btn btn-default" %></td>
-                                              <td><%= link_to 'Remove exercise', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                              <td><%= link_to 'Remove meal', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                             </tr> 
                                           <% end %>
                                         </tbody>

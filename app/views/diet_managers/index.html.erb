@@ -16,7 +16,7 @@
         <tr>
           <td><%= diet_manager.user.fullname %></td>
           <td><%= diet_manager.diet.name %></td>
-          <td class="danger"><%= link_to 'Remove meal', diet_manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Remove meal', diet_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
