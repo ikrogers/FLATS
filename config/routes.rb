@@ -21,8 +21,7 @@ FLATS::Application.routes.draw do
     end
 
     unauthenticated :user do
-    #  root :to => 'devise/sessions#new', as: :unauthenticated_root
-      root :to => 'homepage#index', as: :unauthenticated_root
+      root :to => 'devise/sessions#new', as: :unauthenticated_root
     end
     end
     

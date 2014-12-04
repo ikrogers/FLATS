@@ -1,6 +1,9 @@
-<div class="authform">
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+<div id="btg">
+<div class="authform" style="overflow: scroll;">
+
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
+    <h3>Edit <%= resource_name.to_s.humanize %></h3>
+
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label :email %>
@@ -60,3 +63,17 @@
 <p>Unhappy? We'll be sad to see you go.</p>
 <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
 </div>
+</div>
+
+<style>
+	#btg {
+		background: url(/assets/freebike.jpg) center no-repeat;
+		background-size: 100% auto;
+		/* Preserve aspet ratio */
+		left: 0;
+		right: 0;
+		position: fixed;
+		min-width: 100%;
+		min-height: 100%;
+	}
+</style>
