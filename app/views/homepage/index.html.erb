@@ -19,8 +19,9 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Training requested</th>
-                    <th></th>
+                    <th style="width: 75%;">Training requested</th>
+                    <th>Diets</th>
+                    <th>Exercises</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +29,8 @@
                    <% if u.diet_fitness_flag > 0 %>
                         <tr>
                             <td><%= u.fullname %></td>
-                            <td><%= link_to 'Train exercise', new_exercise_manager_path(:user => u), :class => 'btn btn-default' %></td>
+                            <td><%= link_to 'Train', new_diet_manager_path(:user => u), :class => 'btn btn-default' %></td>
+                            <td><%= link_to 'Train', new_exercise_manager_path(:user => u), :class => 'btn btn-default' %></td>
                         </tr>
                     <% end %>
                 <% end %>
@@ -51,15 +53,15 @@
                 <div class="col-xs-2 col-md-2"></div>
                 <div class="col-xs-4 col-md-4 has-bg">
                     <h2>Welcome, <%= current_user.fullname %>!</h2>
-                    <h3><%= Time.now.strftime "%m/%d/%Y | %H:%M" %></h3>
                 </div>
-                <div class="col-xs-4 col-md-4 has-bg"><h2>&nbsp</h2><h3>&nbsp</h3></div>
                 <div class="col-xs-2 col-md-2"></div>
             </div>
             <div class="row">
                 <div class="col-xs-2 col-md-2"></div>
                 <div class="col-xs-8 col-md-8 has-bg">
                     <table class="table table-horizontal">
+                        <% @dscore = number_with_precision(current_user.diet_score.to_f, :precision => 2) %>
+                        <% @fscore = number_with_precision(current_user.ex_score.to_f, :precision => 2) %>
                         <tr><td class="info">Stats</td></tr>
                         <tr><td><p>Age: <%= current_user.age %></p>
                         <p>Weight: <%= current_user.weight %> lbs.</p>
@@ -67,17 +69,20 @@
                         <% @inches = current_user.height % 12 %>
                         <p>Height: <%= "%d'%d\"" % [@feet, @inches] %></p>
                         <p>Gender: <%= current_user.gender %></p>
-                        <p>Fitness Score: <%= number_with_precision(current_user.ex_score.to_f, :precision => 2) %> <i><span class="
+                        <p>Fitness Score: <%= (@fscore.nil? || @fscore.to_i == 0) ? (link_to "Take Fitness Test".html_safe, fitness_info_input_path, :class => "btn btn-danger") : @fscore %>
+                            <% if ( @fscore.to_i != 0) %>
+                            <i><span class="
                             <%=  
-                            if fit_rating == "Above Average"
+                            if fit_rating(current_user) == "Above Average"
                                 "above-average"
-                            elsif fit_rating == "Below Average"
+                            elsif fit_rating(current_user) == "Below Average"
                                 "below-average"
                             else
-                                fit_rating.downcase
+                                fit_rating(current_user).downcase
                             end
-                            %>"><%= fit_rating.downcase %></span></i></p>
-                        <p>Diet Score: <%= number_with_precision(current_user.diet_score.to_f, :precision => 2) %> <i>kilocalories must be consumed to maintain current weight</i></p></td></tr>
+                            %>"><%= fit_rating(current_user).downcase %></span></i> 
+                            <% end %></p>
+                        <p>Diet Score: <%= (@dscore.nil? || @dscore.to_i == 0) ? (link_to "Take Diet Test".html_safe, diet_info_input_path, :class => "btn btn-danger") : @dscore + " <i>kilocalories must be consumed to maintain current weight</i>".html_safe %> </p></td></tr>
                     </table>
                 </div>
                 <div class="col-xs-2 col-md-2"></div>
@@ -103,16 +108,21 @@
                 <div class="col-xs-2 col-md-2"></div>
                 <div class="col-xs-8 col-md-8 has-bg">
                     <table class="table table-horizontal">
-                        <tr><td class="info">Diet </td></tr>
-                        <tr><td>
-                            <% if current_user.diet_score.nil? %>
-                                <%= link_to "Take Diet Test".html_safe, diet_info_input_path, :class => "btn btn-danger" %>
+                        <% @diet_differential = current_user.diets.map {|d| d['calories']}.reduce(0, :+).round %>
+                        <% @remaining = @dscore.to_i - @diet_differential.to_i %>
+                        <tr><td class="info">
+                            Diet
+                            <% if !(current_user.diet_score.nil?) %>
+                                [<%= @diet_differential %>/<%= @dscore %>] ~<%= @remaining %> remaining calories
+                                <% @numbars = (@diet_differential.to_f / @dscore.to_f) * 10 %>
+                                <% if @numbars > 10; @numbars = 10; end %>
+                                [<%= "█" * @numbars %><%= "▒" * (10 - @numbars) %>] <%= @numbars.to_i * 10 %>%
                             <% end %>
-                            <% if current_user.diets.count == 0 %>
-                                <%= link_to "Make My Diet", new_diet_manager_path, :class => "btn btn-default btn-small" %>
-                            <% elsif %>
+                        </td></tr>
+                        <tr><td>
+                            <% if current_user.diets.count > 0 %>
                                 <div style="margin-left: 10%; width: 75%;">
-                                    <table class="table table-striped">
+                                    <table class="table table-condensed">
                                         <tbody>
                                           <% current_user.diets.each do |d| %>
                                             <tr>
@@ -121,9 +131,16 @@
                                               <td><%= link_to 'Remove meal', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                             </tr> 
                                           <% end %>
+                                          <tr><td>
+                                            <%= link_to "Take Diet Test".html_safe, diet_info_input_path, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                            <%= link_to "Make My Diet", new_diet_manager_path, :class => "btn btn-default btn-small" %>
+                                          </td></tr>
                                         </tbody>
                                     </table>
                                 </div>
+                            <% else %>
+                                <%= link_to "Take Diet Test".html_safe, diet_info_input_path, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                <%= link_to "Make My Diet", new_diet_manager_path, :class => "btn btn-default btn-small" %>
                             <% end %>
                         </td></tr>
                     </table>
@@ -135,16 +152,11 @@
                 <div class="col-xs-8 col-md-8 has-bg">
                     <table class="table table-horizontal">
                         <% @ex_differential = current_user.exercises.map {|d| d['calories']}.reduce(0, :+).round %>
-                        <tr><td class="info">Fitness <%= @ex_differential %> calories burned</td></tr>
+                        <tr><td class="info">Fitness ~<%= @ex_differential %> calories burned</td></tr>
                         <tr><td>
-                            <% if current_user.ex_score.nil? %>
-                                <%= link_to "Take Fitness Test", fitness_info_input_path, :class => "btn btn-danger" %>
-                            <% end %>
-                            <% if current_user.exercises.count == 0 %>
-                                <%= link_to "Make My Workout", new_exercise_manager_path, :class => "btn btn-default btn-small" %>
-                            <% elsif %>
+                            <% if current_user.exercises.count > 0 %>
                                 <div style="margin-left: 10%; width: 75%;">
-                                    <table class="table table-striped">
+                                    <table class="table table-condensed">
                                         <tbody>
                                           <% current_user.exercises.each do |e| %>
                                             <tr>
@@ -153,9 +165,16 @@
                                               <td><%= link_to 'Remove exercise', e, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                             </tr> 
                                           <% end %>
+                                          <tr><td>
+                                            <%= link_to "Take Fitness Test", fitness_info_input_path, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                            <%= link_to "Make My Workout", new_exercise_manager_path, :class => "btn btn-default btn-small" %>
+                                          </td></tr>
                                         </tbody>
                                     </table>
                                 </div>
+                            <% else %>
+                                <%= link_to "Take Fitness Test", fitness_info_input_path, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                <%= link_to "Make My Workout", new_exercise_manager_path, :class => "btn btn-default btn-small" %>
                             <% end %>
                         </td></tr>
                     </table>

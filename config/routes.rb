@@ -2,7 +2,7 @@ FLATS::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: { registrations: 'registrations'}
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions', passwords: 'passwords'}
 
   resources :diet_managers
 
@@ -14,16 +14,16 @@ FLATS::Application.routes.draw do
 
   
   
-   devise_scope :user do
-    authenticated :user do
+  devise_scope :user do
 
+    authenticated :user do
       root :to => 'homepage#index', as: :authenticated_root
     end
 
     unauthenticated :user do
       root :to => 'devise/sessions#new', as: :unauthenticated_root
     end
-    end
+  end
     
     
   get "/fitness_info" , :to => "exercise_managers#fitness_info", :as => 'fitness_info_input'

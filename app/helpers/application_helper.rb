@@ -11,8 +11,8 @@ module ApplicationHelper
         @devise_mapping ||= Devise.mappings[:user]
     end
     
-    def fit_rating
-    @user = current_user
+    def fit_rating(user)
+    @user = User.find_by_id(user)
     @age = @user.age
     @vomax = @user.ex_score.to_f
 

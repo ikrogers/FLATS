@@ -35,7 +35,9 @@ class RegistrationsController < Devise::RegistrationsController
       if @validatable
         @minimum_password_length = resource_class.password_length.min
       end
-      respond_with resource
+      respond_to do |format|
+         format.html{redirect_to unauthenticated_root_path, alert: 'Information you have entered is not correct'}
+      end
     end
   end
 
