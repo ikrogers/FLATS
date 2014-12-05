@@ -37,14 +37,14 @@ main {
   @extend .container;
  
     /* Preserve aspet ratio */
-        background-size: 100% auto;
-
+   background: url(/assets/defback.jpg) center no-repeat;
+    /* Preserve aspet ratio */
     left: 0;
     right: 0;
     position: fixed;
     min-width: 100%;
     min-height: 100%;
-  
+        background-size: 100% auto;
   margin-top: 51px; // accommodate the navbar
   }
 section {
