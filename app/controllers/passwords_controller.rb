@@ -16,7 +16,9 @@ class PasswordsController < Devise::PasswordsController
     if successfully_sent?(resource)
       respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
     else
-      respond_with(resource)
+      respond_to do |format|
+         format.html{redirect_to new_user_password_path, notice: 'Password reset instructions have been sent to your email address!'}
+      end
     end
   end
 
@@ -38,7 +40,9 @@ class PasswordsController < Devise::PasswordsController
       sign_in(resource_name, resource)
       respond_with resource, location: after_resetting_password_path_for(resource)
     else
-      respond_with resource
+      respond_to do |format|
+         format.html{redirect_to new_user_password_path, alert: 'Information you have entered is not correct'}
+      end
     end
   end
 
