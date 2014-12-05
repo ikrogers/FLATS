@@ -1,31 +1,43 @@
-<div class="authform">
-	<%= form_tag(register_clear_path) do %>
-	<h3 style="text-align: center">Additional Information</h3>
-	<div class="form-group">
-		<%= label_tag "First Name" %>
-		<%= text_field_tag :first,nil, class: 'form-control' %>
+<div id="bg">
+	<div class="authform">
+		<%= form_tag(register_clear_path) do %>
+		<h3 style="text-align: center">Additional Information</h3>
+		<div class="form-group">
+			<%= label_tag "First Name" %>
+			<%= text_field_tag :first,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Last Name" %>
+			<%= text_field_tag :last,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Birth" %>
+			<%= text_field_tag :birth,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Gender" %>
+			<%= text_field_tag :gender,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Weight(lbs)" %>
+			<%= text_field_tag :weight,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Height(in)" %>
+			<%= text_field_tag :height,nil, class: 'form-control' %>
+		</div>
+		<%= submit_tag 'Continue', :class => 'btn btn-primary center-block' %>
+		<% end %>
 	</div>
-	<div class="form-group">
-		<%= label_tag "Last Name" %>
-		<%= text_field_tag :last,nil, class: 'form-control' %>
-	</div>
-	<div class="form-group">
-		<%= label_tag "Birth" %>
-		<%= text_field_tag :birth,nil, class: 'form-control' %>
-	</div>
-	<div class="form-group">
-		<%= label_tag "Gender" %>
-		<%= text_field_tag :gender,nil, class: 'form-control' %>
-	</div>
-	<div class="form-group">
-		<%= label_tag "Weight(lbs)" %>
-		<%= text_field_tag :weight,nil, class: 'form-control' %>
-	</div>
-	<div class="form-group">
-		<%= label_tag "Height(in)" %>
-		<%= text_field_tag :height,nil, class: 'form-control' %>
-	</div>
-	<%= submit_tag 'Continue', :class => 'btn btn-primary center-block' %>
-	<% end %>
 </div>
-
+<style>
+	#bg{
+	background: url(/assets/metal.jpg) center no-repeat;
+	/* Preserve aspet ratio */
+	left: 0;
+	right: 0;
+	position: fixed;
+	min-width: 100%;
+	min-height: 100%;
+	background-size: 100% auto;
+</style>
