@@ -18,9 +18,10 @@ class ExerciseManagersController < ApplicationController
   end
 
   def create
+    @user = params[:trainee].nil? ? current_user : params[:trainee]
     @man = Exercise.find(params[:project][:sel_ex]) rescue nil
     @man.each do |e|
-      @em = ExerciseManager.create(user_id: current_user.id, exercise_id: e.id)
+      @em = ExerciseManager.create(user_id: @user, exercise_id: e.id)
     end
     respond_to do |format|
       format.html { redirect_to exercise_managers_path }

@@ -20,14 +20,16 @@
       </tr>
     </thead>
     <tbody>
-        <% Diet.all.each do |d| %>
-          <tr>
-              <td><%= check_box_tag 'project[sel_diet][]', d.id, false, class: 'form-control' %></td>
-              <td><%= d.name %></td>
-              <td><%= d.descr %></td>
-              <td><center><%= d.calories %></center></td>
-          </tr>
-        <% end %>
+      <% @user = (params[:user].nil? ? current_user.id : params[:user]) %>
+      <% Diet.all.each do |d| %>
+        <tr>
+          <%= hidden_field_tag :trainee, @user %>
+          <td><%= check_box_tag 'project[sel_diet][]', d.id, false, class: 'form-control' %></td>
+          <td><%= d.name %></td>
+          <td><%= d.descr %></td>
+          <td><center><%= d.calories %></center></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
   

@@ -49,11 +49,6 @@
             <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
           </ul>
         </li>
-        <% elsif %>
-            <li class="dropdown">
-                <%= "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>".html_safe %> Login<span class="caret"></span></a>
-                <ul class="dropdown-menu widener" role="menu">
-                    <%= render :file => '/devise/sessions/login' %>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
