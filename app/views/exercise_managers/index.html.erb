@@ -1,8 +1,7 @@
-<div style="width: 60%; margin-left: 20%;">
+<div>
   <center>
     <h3>My exercises</h3>
   </center>
-
   <table class="table table-hover">
     <thead>
       <tr>
@@ -17,7 +16,7 @@
         <tr>
           <td><%= exercise_manager.user.fullname %></td>
           <td><%= exercise_manager.exercise.name %></td>
-          <td><%= link_to 'Show', exercise_manager.exercise, :class => "btn btn-default" %></td>
+          <td><%= button_to 'Show', exercise_manager.exercise, :class => "btn btn-default", :method => :get %></td>
           <td><%= link_to 'Remove exercise', exercise_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
