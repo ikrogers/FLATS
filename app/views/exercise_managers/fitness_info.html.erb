@@ -4,12 +4,10 @@
 	</div>
 	<div class="panel-body">
 		<div class="container">
-
 			<body>
 			<a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionThree">
 			<p class='text-muted'>
 				Detailed Instructions (Please read first if doing this first time!)
-
 			</p></a>
 			<div id="accordionThree" class="panel-collapse collapse">
 				<div class="panel-body">
@@ -23,7 +21,6 @@
 					<p>
 						Fill out your age and then please run/walk for 12 minutes and the record your distance (in miles so if you run 3 laps its .75 mile) in the field below after which clicking submit.
 					</p>
-
 				</div>
 			</div>
 					<%= form_tag(fitness_info_output_path) do%>
@@ -39,7 +36,6 @@
 						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>
 						<%= link_to 'Abandon Test', authenticated_root_path, :class => 'btn btn-default' %>
 					</div>
-
 					<% end %>
 				</div>
 			</body>

@@ -49,137 +49,167 @@
     <% else %>
         <!-- Profile extras are completed -->
         <div class="row">
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-4 col-md-4 has-bg">
-                    <h2>Welcome, <%= current_user.fullname %>!</h2>
+            <div class="col-xs-1 col-md-1"></div>
+            <div class="col-xs-8 col-md-8"><h2>Welcome, <%= current_user.fullname %>!</h2></div>
+            <div class="col-xs-1 col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1 col-md-1"></div>
+            <div class="col-xs-9 col-md-9">
+                <% @dscore = number_with_precision(current_user.diet_score.to_f, :precision => 2) %>
+                <% @fscore = number_with_precision(current_user.ex_score.to_f, :precision => 2) %>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionStats"><h3 class="panel-title">Stats</h3></a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionStats">
+                            <p class='text-muted'> muted text inside the closed container </p></a> -->
+                            <div id="accordionStats" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tr><td><p>Age: <%= current_user.age %></p>
+                                            <p>Weight: <%= current_user.weight %> lbs.</p>
+                                            <% @feet = current_user.height / 12 %>
+                                            <% @inches = current_user.height % 12 %>
+                                            <p>Height: <%= "%d'%d\"" % [@feet, @inches] %></p>
+                                            <p>Gender: <%= current_user.gender %></p>
+                                            <p>Fitness Score: <%= (@fscore.nil? || @fscore.to_i == 0) ? (link_to "Take Fitness Test".html_safe, fitness_info_input_path, :class => "btn btn-danger") : @fscore %>
+                                            <% if ( @fscore.to_i != 0) %>
+                                                <i><span class="
+                                                <%=  
+                                                if fit_rating(current_user) == "Above Average"
+                                                    "above-average"
+                                                elsif fit_rating(current_user) == "Below Average"
+                                                    "below-average"
+                                                else
+                                                    fit_rating(current_user).downcase
+                                                end
+                                                %>"><%= fit_rating(current_user).downcase %></span></i> 
+                                            <% end %></p>
+                                            <p>Diet Score: <%= (@dscore.nil? || @dscore.to_i == 0) ? (link_to "Take Diet Test".html_safe, diet_info_input_path, :class => "btn btn-danger") : @dscore + " <i>kilocalories must be consumed to maintain current weight</i>".html_safe %></p>
+                                        </td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-2 col-md-2"></div>
             </div>
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8 has-bg">
-                    <table class="table table-horizontal">
-                        <% @dscore = number_with_precision(current_user.diet_score.to_f, :precision => 2) %>
-                        <% @fscore = number_with_precision(current_user.ex_score.to_f, :precision => 2) %>
-                        <tr><td class="info">Stats</td></tr>
-                        <tr><td><p>Age: <%= current_user.age %></p>
-                        <p>Weight: <%= current_user.weight %> lbs.</p>
-                        <% @feet = current_user.height / 12 %>
-                        <% @inches = current_user.height % 12 %>
-                        <p>Height: <%= "%d'%d\"" % [@feet, @inches] %></p>
-                        <p>Gender: <%= current_user.gender %></p>
-                        <p>Fitness Score: <%= (@fscore.nil? || @fscore.to_i == 0) ? (link_to "Take Fitness Test".html_safe, fitness_info_input_path, :class => "btn btn-danger") : @fscore %>
-                            <% if ( @fscore.to_i != 0) %>
-                            <i><span class="
-                            <%=  
-                            if fit_rating(current_user) == "Above Average"
-                                "above-average"
-                            elsif fit_rating(current_user) == "Below Average"
-                                "below-average"
-                            else
-                                fit_rating(current_user).downcase
-                            end
-                            %>"><%= fit_rating(current_user).downcase %></span></i> 
-                            <% end %></p>
-                        <p>Diet Score: <%= (@dscore.nil? || @dscore.to_i == 0) ? (link_to "Take Diet Test".html_safe, diet_info_input_path, :class => "btn btn-danger") : @dscore + " <i>kilocalories must be consumed to maintain current weight</i>".html_safe %> </p></td></tr>
-                    </table>
+            <div class="col-xs-1 col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1 col-md-1"></div>
+            <div class="col-xs-9 col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionCharts"><h3 class="panel-title">Charts</h3></a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionCharts">
+                            <p class='text-muted'> muted text inside the closed container </p></a> -->
+                            <div id="accordionCharts" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <table class="table table-horizontal">
+                                        <tr><td>
+                                            <% if current_user.exercises.count > 0 || current_user.diets.count > 0 %>
+                                                <span style="float: left; width: 50%;"><%= pie_chart current_user.exercises.group(:name).sum(:calories)  %></span>
+                                                <span style="float: left; width: 50%;"><%= pie_chart current_user.diets.group(:name).sum(:calories) %></span>
+                                        <% end %>
+                                        </td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-2 col-md-2"></div>
             </div>
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8 has-bg">
-                    <table class="table table-horizontal">
-                        <tr><td class="info">Charts</td></tr>
-                        <tr>
-                            <td>
-                                <% if current_user.exercises.count > 0 || current_user.diets.count > 0 %>
-                                    <span style="float: left; width: 50%;"><%= pie_chart current_user.exercises.group(:name).sum(:calories)  %></span>
-                                    <span style="float: left; width: 50%;"><%= pie_chart current_user.diets.group(:name).sum(:calories) %></span>
-                                <% end %>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-xs-2 col-md-2"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8 has-bg">
-                    <table class="table table-horizontal">
+            <div class="col-xs-1 col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1 col-md-1"></div>
+            <div class="col-xs-4 col-md-4 has-bg">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
                         <% @diet_differential = current_user.diets.map {|d| d['calories']}.reduce(0, :+).round %>
                         <% @remaining = @dscore.to_i - @diet_differential.to_i %>
-                        <tr><td class="info">
-                            Diet
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionDiet"><h3 class="panel-title">Diet
                             <% if !(current_user.diet_score.nil?) %>
-                                [<%= @diet_differential %>/<%= @dscore %>] ~<%= @remaining %> remaining calories
-                                <% @numbars = (@diet_differential.to_f / @dscore.to_f) * 10 %>
-                                <% if @numbars > 10; @numbars = 10; end %>
-                                [<%= "█" * @numbars %><%= "▒" * (10 - @numbars) %>] <%= @numbars.to_i * 10 %>%
+                                <% @numbars = (@diet_differential.to_f / @dscore.to_f) * 20 %>
+                                <% if @numbars > 20; @numbars = 20; end %>
+                                [<%= "█" * @numbars %><%= "▒" * (20 - @numbars.to_i) %>] <%= @numbars.to_i * 5 %>% 
+                                ~<%= @remaining %> remaining calories
                             <% end %>
-                        </td></tr>
-                        <tr><td>
-                            <% if current_user.diets.count > 0 %>
-                                <div style="margin-left: 10%; width: 75%;">
-                                    <table class="table table-condensed">
-                                        <tbody>
-                                          <% current_user.diets.each do |d| %>
-                                            <tr>
-                                              <td style="width: 60%"><%= d.name %></td>
-                                              <td><%= link_to 'Show', d, :class => "btn btn-default" %></td>
-                                              <td><%= link_to 'Remove meal', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                                            </tr> 
-                                          <% end %>
-                                          <tr><td>
-                                            <%= link_to "Take Diet Test".html_safe, diet_info_input_path, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-                                            <%= link_to "Make My Diet", new_diet_manager_path, :class => "btn btn-default btn-small" %>
-                                          </td></tr>
-                                        </tbody>
-                                    </table>
+                        </h3></a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionDiet">
+                            <p class='text-muted'> muted text inside the closed container </p></a> -->
+                            <div id="accordionDiet" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <% if current_user.diets.count > 0 %>
+                                        <table class="table table-condensed" style="width: 50%;">
+                                            <% current_user.diets.each do |d| %>
+                                                <tr>
+                                                    <td><%= d.name %></td>
+                                                    <td><%= button_to 'Show', d, :class => "btn btn-default", :method => :get %></td>
+                                                    <td><%= button_to 'Remove meal', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                                </tr> 
+                                            <% end %>
+                                            <tr><td>
+                                                <%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                                <%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                            </td></tr>
+                                        </table>
+                                    <% else %>
+                                        <%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                        <%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                    <% end %>
                                 </div>
-                            <% else %>
-                                <%= link_to "Take Diet Test".html_safe, diet_info_input_path, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-                                <%= link_to "Make My Diet", new_diet_manager_path, :class => "btn btn-default btn-small" %>
-                            <% end %>
-                        </td></tr>
-                    </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-2 col-md-2"></div>
             </div>
-            <div class="row">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8 has-bg">
-                    <table class="table table-horizontal">
+            <div class="col-xs-1 col-md-1"></div>
+            <div class="col-xs-4 col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
                         <% @ex_differential = current_user.exercises.map {|d| d['calories']}.reduce(0, :+).round %>
-                        <tr><td class="info">Fitness ~<%= @ex_differential %> calories burned</td></tr>
-                        <tr><td>
-                            <% if current_user.exercises.count > 0 %>
-                                <div style="margin-left: 10%; width: 75%;">
-                                    <table class="table table-condensed">
-                                        <tbody>
-                                          <% current_user.exercises.each do |e| %>
-                                            <tr>
-                                              <td style="width: 60%"><%= e.name %></td>
-                                              <td><%= link_to 'Show', e, :class => "btn btn-default" %></td>
-                                              <td><%= link_to 'Remove exercise', e, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                                            </tr> 
-                                          <% end %>
-                                          <tr><td>
-                                            <%= link_to "Take Fitness Test", fitness_info_input_path, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-                                            <%= link_to "Make My Workout", new_exercise_manager_path, :class => "btn btn-default btn-small" %>
-                                          </td></tr>
-                                        </tbody>
-                                    </table>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionFitness"><h3 class="panel-title">Fitness ~<%= @ex_differential %> calories burned</h3></a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionFitness">
+                            <p class='text-muted'> muted text inside the closed container </p></a> -->
+                            <div id="accordionFitness" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <% if current_user.exercises.count > 0 %>
+                                        <table class="table table-condensed" style="width: 50%;">
+                                            <% current_user.exercises.each do |e| %>
+                                                <tr>
+                                                    <td><%= e.name %></td>
+                                                    <td><%= link_to 'Show', e, :class => "btn btn-default", :method => :get %></td>
+                                                    <td><%= link_to 'Remove exercise', e, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                                </tr> 
+                                            <% end %>
+                                            <tr><td>
+                                                <%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                                <%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                            </td></tr>
+                                        </table>
+                                    <% else %>
+                                        <%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+                                        <%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                    <% end %>
                                 </div>
-                            <% else %>
-                                <%= link_to "Take Fitness Test", fitness_info_input_path, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-                                <%= link_to "Make My Workout", new_exercise_manager_path, :class => "btn btn-default btn-small" %>
-                            <% end %>
-                        </td></tr>
-                    </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-2 col-md-2"></div>
             </div>
         </div>
     <% end %>
