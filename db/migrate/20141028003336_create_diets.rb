@@ -4,6 +4,7 @@ class CreateDiets < ActiveRecord::Migration
       t.string :name,      null: false, default: ""
       t.text :descr,        null: false, default: ""
       t.decimal :calories,  null: false, default: 0.0
+      t.decimal :intensity, null: false, default: 0
 
       t.timestamps
     end

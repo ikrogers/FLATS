@@ -152,18 +152,113 @@ Exercise.create(
     :calories => 200, 
     :intensity => 3)
 
-Diet.create(:name => "Apple (Golden Delicious)", :descr => "", :calories => 62)
-Diet.create(:name => "Orange", :descr => "", :calories => 45)
-Diet.create(:name => "Pear", :descr => "", :calories => 81)
-Diet.create(:name => "Grapefruit", :descr => "", :calories => 32)
-Diet.create(:name => "Watermelon", :descr => "", :calories => 46)
-Diet.create(:name => "Big Mac", :descr => "", :calories => 550)
-Diet.create(:name => "Whopper", :descr => "", :calories => 650)
-Diet.create(:name => "Frosted Flakes", :descr => "", :calories => 143)
-Diet.create(:name => "Raisan Bran", :descr => "", :calories => 190)
-Diet.create(:name => "Fried Chicken Breast", :descr => "", :calories => 294)
-Diet.create(:name => "Broiled Chicken Breast", :descr => "", :calories => 194)
-Diet.create(:name => "Sour Cream & Onion Potato Chips", :descr => "", :calories => 0)
+Diet.create(:name => "Apple (Golden Delicious)", 
+    :descr => "Serving weights 242 gramms and contain 126 colories with significant dietary fiber and modest vitamin C content", 
+    :calories => 62, 
+    :intensity => 1)
+
+Diet.create(:name => "Orange", 
+    :descr => "It's fruit, which is rich in antioxidants and vitamins such as vitamin C, vitamin B6, folic acid and dietary fiber", 
+    :calories => 45, 
+    :intensity => 1)
+
+Diet.create(:name => "Pear", 
+    :descr => "It's sweet juicy yellow or green fruit, which contains much calcium and riboflavin", 
+    :calories => 81, 
+    :intensity => 1)
+
+Diet.create(:name => "Grapefruit", 
+    :descr => "It's a large citrus fruit with a bitter yellow rind and inner skin and a highly flavored somewhat acid juicy pulp", 
+    :calories => 32, 
+    :intensity => 1)
+
+Diet.create(:name => "Watermelon", 
+    :descr => "It's a large oblong or roundish fruit with a hard green or white rind often striped a sweet watery pink, yellowish, or red pulp, and usually many seeds.", 
+    :calories => 46, 
+    :intensity => 1)
+
+Diet.create(:name => "Big Mac", 
+    :descr => "Consists of two 1.6 oz (45.4 g) 100 per cent beef patties, American cheese, special sauce, iceberg lettuce, pickles, and onions, served 
+           in a three-part sesame seed bun.", 
+    :calories => 550, 
+    :intensity => 4)
+
+Diet.create(:name => "Whopper", 
+    :descr => "Whopper is a hamburger, consisting of a flame grilled quarter-pound (113.4 g) beef patty, sesame seed bun, mayonnaise, lettuce, tomato, 
+           pickles, ketchup, and sliced onion", 
+    :calories => 650, 
+    :intensity => 4)
+
+Diet.create(:name => "Frosted Flakes", 
+    :descr => "It's a breakfast cereal which consists of sugar-coated corn flakes.", 
+    :calories => 143, 
+    :intensity => 2)
+
+Diet.create(:name => "Raisan Bran", 
+    :descr => "It's a breakfast cereal manufactured by several companies under a variety of brand names, including Kellogg's Raisin Bran, General Mills' 
+            Total Raisin Bran and Post Foods' Post Raisin Bran", 
+    :calories => 190, 
+    :intensity => 2)
+
+Diet.create(:name => "Fried Chicken Breast", 
+    :descr => "It's a boneless, tenderized piece of meat that has been floured or battered and cooked in any of the methods", 
+    :calories => 294, 
+    :intensity => 3)
+
+Diet.create(:name => "Broiled Chicken Breast", 
+    :descr => "It's a nutritious and versatile food. It can be prepared in a number of ways to accomplish different flavors, 
+           textures and presentations", 
+    :calories => 194, 
+    :intensity => 3)
+
+Diet.create(:name => "Sour Cream & Onion Potato Chips", 
+    :descr => "It's a snack food, which contains very few vitamins and minerals in any variety. At ten percent of the daily requirement per serving, 
+           vitamin C is the highest. Salt content is particularly high, with a serving containing as much as 380 mg of sodium.", 
+    :calories => 0, 
+    :intensity => 1)
+
+Diet.create(:name => "Butter", 
+    :descr => "It's a solid yellow substance made from milk or cream that is spread on food", 
+    :calories => 36, 
+    :intensity => 1)
+    
+Diet.create(:name => "Schrimp", 
+    :descr => "It's high in calcium, iodine and protein but low in food energy", 
+    :calories => 110, 
+    :intensity => 2)
+    
+Diet.create(:name => "Potatos", 
+    :descr => "It's a starchy brown or red-skinned growth of a plant in the nightshade family, eaten as a cooked vegetable.", 
+    :calories => 97, 
+    :intensity => 1)
+    
+Diet.create(:name => "Boiled Egg", 
+    :descr => "Egg cooked briefly in the shell in gently boiling water", 
+    :calories => 80, 
+    :intensity => 1)
+    
+Diet.create(:name => "Vegatables Soup", 
+    :descr => "Soup made with a variety of vegetables", 
+    :calories => 255, 
+    :intensity => 3)
+    
+Diet.create(:name => "COTTAGE CHEESE", 
+    :descr => "is a fresh cheese curd product with a mild flavor. A 4-oz (113-g) serving of 4% fat product has about 120 calories, 5 g fat, 3 g carbohydrates, and 14 g protein.
+               It also contains about 500 mg sodium, 70 mg calcium and 20 mg cholesterol", 
+    :calories => 90, 
+    :intensity => 1)
+    
+Diet.create(:name => "Crispbread", 
+    :descr => "is a flat and dry type of bread or cracker, containing mostly rye flour. Crispbreads are light and keep fresh for a very long time. Crispbread is a staple food and 
+              was for a long time considered a poor man's diet.", 
+    :calories => 92, 
+    :intensity => 1)
+    
+Diet.create(:name => "Bread", 
+    :descr => "is a staple food prepared from dough of flour and water, usually by baking", 
+    :calories => 24, 
+    :intensity => 1)
+
 
 
 
