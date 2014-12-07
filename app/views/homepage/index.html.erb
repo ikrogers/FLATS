@@ -29,8 +29,8 @@
                    <% if u.diet_fitness_flag > 0 %>
                         <tr>
                             <td><%= u.fullname %></td>
-                            <td><%= link_to 'Train', new_diet_manager_path(:user => u), :class => 'btn btn-default' %></td>
-                            <td><%= link_to 'Train', new_exercise_manager_path(:user => u), :class => 'btn btn-default' %></td>
+                            <td><%= button_to 'Train', new_diet_manager_path(:user => u), :method => :get, :class => 'btn btn-default' %></td>
+                            <td><%= button_to 'Train', new_exercise_manager_path(:user => u), :method => :get, :class => 'btn btn-default' %></td>
                         </tr>
                     <% end %>
                 <% end %>
@@ -75,7 +75,7 @@
                                             <% @inches = current_user.height % 12 %>
                                             <p>Height: <%= "%d'%d\"" % [@feet, @inches] %></p>
                                             <p>Gender: <%= current_user.gender %></p>
-                                            <p>Fitness Score: <%= (@fscore.nil? || @fscore.to_i == 0) ? (link_to "Take Fitness Test".html_safe, fitness_info_input_path, :class => "btn btn-danger") : @fscore %>
+                                            <p>Fitness Score: <%= (@fscore.nil? || @fscore.to_i == 0) ? (button_to "Take Fitness Test".html_safe, fitness_info_input_path, :method => :get, :class => "btn btn-danger") : @fscore %>
                                             <% if ( @fscore.to_i != 0) %>
                                                 <i><span class="
                                                 <%=  
@@ -88,7 +88,7 @@
                                                 end
                                                 %>"><%= fit_rating(current_user).downcase %></span></i> 
                                             <% end %></p>
-                                            <p>Diet Score: <%= (@dscore.nil? || @dscore.to_i == 0) ? (link_to "Take Diet Test".html_safe, diet_info_input_path, :class => "btn btn-danger") : @dscore + " <i>kilocalories must be consumed to maintain current weight</i>".html_safe %></p>
+                                            <p>Diet Score: <%= (@dscore.nil? || @dscore.to_i == 0) ? (button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => "btn btn-danger") : @dscore + " <i>kilocalories must be consumed to maintain current weight</i>".html_safe %></p>
                                         </td></tr>
                                     </table>
                                 </div>
@@ -112,12 +112,12 @@
                             <p class='text-muted'> muted text inside the closed container </p></a> -->
                             <div id="accordionCharts" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <table class="table table-horizontal">
+                                    <table class="table">
                                         <tr><td>
                                             <% if current_user.exercises.count > 0 || current_user.diets.count > 0 %>
                                                 <span style="float: left; width: 50%;"><%= pie_chart current_user.exercises.group(:name).sum(:calories)  %></span>
                                                 <span style="float: left; width: 50%;"><%= pie_chart current_user.diets.group(:name).sum(:calories) %></span>
-                                        <% end %>
+                                            <% end %>
                                         </td></tr>
                                     </table>
                                 </div>
@@ -130,7 +130,7 @@
         </div>
         <div class="row">
             <div class="col-xs-1 col-md-1"></div>
-            <div class="col-xs-4 col-md-4 has-bg">
+            <div class="col-xs-4 col-md-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <% @diet_differential = current_user.diets.map {|d| d['calories']}.reduce(0, :+).round %>
@@ -144,20 +144,37 @@
                             <% end %>
                         </h3></a>
                     </div>
+                    
                     <div class="panel-body">
-                        <div class="container">
                             <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionDiet">
                             <p class='text-muted'> muted text inside the closed container </p></a> -->
                             <div id="accordionDiet" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <% if current_user.diets.count > 0 %>
-                                        <table class="table table-condensed" style="width: 50%;">
+                                        <table class="table">
                                             <% current_user.diets.each do |d| %>
                                                 <tr>
                                                     <td><%= d.name %></td>
-                                                    <td><%= button_to 'Show', d, :class => "btn btn-default", :method => :get %></td>
+                                                    <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
                                                     <td><%= button_to 'Remove meal', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                                                </tr> 
+                                                </tr>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                        <h4 class="modal-title" id="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_label"><%= d.name %></h4>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        Calories: <%= d.calories %>
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                                             <% end %>
                                             <tr><td>
                                                 <%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
@@ -170,7 +187,6 @@
                                     <% end %>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -182,19 +198,37 @@
                         <a data-toggle="collapse" data-parent="#accordion" href="#accordionFitness"><h3 class="panel-title">Fitness ~<%= @ex_differential %> calories burned</h3></a>
                     </div>
                     <div class="panel-body">
-                        <div class="container">
                             <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionFitness">
                             <p class='text-muted'> muted text inside the closed container </p></a> -->
                             <div id="accordionFitness" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <% if current_user.exercises.count > 0 %>
-                                        <table class="table table-condensed" style="width: 50%;">
+                                        <table class="table table-condensed">
                                             <% current_user.exercises.each do |e| %>
                                                 <tr>
                                                     <td><%= e.name %></td>
-                                                    <td><%= link_to 'Show', e, :class => "btn btn-default", :method => :get %></td>
-                                                    <td><%= link_to 'Remove exercise', e, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                                                </tr> 
+                                                    <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
+                                                    <td><%= button_to 'Remove exercise', e, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                                </tr>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                        <h4 class="modal-title" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label"><%= e.name %></h4>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        Calories Burned: <%= e.calories %>
+                                                        Instructions: <%= simple_format h e.descr %>
+                                                        <iframe width="100%" height="315px" src="//www.youtube.com/embed/<%= e.video %>" frameborder="0" allowfullscreen></iframe>>
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                                             <% end %>
                                             <tr><td>
                                                 <%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
@@ -207,7 +241,6 @@
                                     <% end %>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -218,4 +251,3 @@
 
 <% end %>
 <% end %>
-
