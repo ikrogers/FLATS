@@ -1,5 +1,42 @@
-<h1>New diet</h1>
+<div class="authform">
+	<%= form_for(@diet) do |f| %>
+	<h3 style="text-align: center">New</h3>
+	<% if @diet.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@diet.errors.count, "error") %> prohibited this diet from being saved:</h2>
 
-<%= render 'form' %>
+		<ul>
+			<% @diet.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
 
-<%= link_to 'Back', diets_path %>
+	<% end %>
+
+	<div class="form-group">
+		<%= f.label :name %>
+		<br>
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label "Description" %>
+		<br>
+		<%= f.text_area :descr, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label :calories %>
+		<br>
+		<%= f.text_field :calories, class: 'form-control' %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Submit", :class => 'btn btn-primary center-block'  %>
+	</div>
+
+	<%= link_to 'Back', diets_path %>
+	<% end %>
+
+</div>
+
