@@ -12,11 +12,16 @@
 		</div>
 		<div class="form-group">
 			<%= label_tag "Birth" %>
-			<%= text_field_tag :birth,nil, class: 'form-control' %>
+			<%= date_field :birth ,nil, class: 'form-control' %>
 		</div>
 		<div class="form-group">
-			<%= label_tag "Gender" %>
-			<%= text_field_tag :gender,nil, class: 'form-control' %>
+			<%= label_tag "Gender" %><br>
+			<%= radio_button_tag :gender, 'Male' %>
+			 <%= label :gender, 'Male' %>
+            <%= radio_button_tag :gender, 'Female' %>
+      		<%= label :gender, 'Female' %>
+            
+
 		</div>
 		<div class="form-group">
 			<%= label_tag "Weight(lbs)" %>

@@ -42,7 +42,7 @@
 <% elsif current_user.u_type == 1 %>
     <!-- User view -->
     
-    <% if current_user.gender.nil? || current_user.gender == "" %>
+    <% if current_user.gender == nil || current_user.gender == "" %>
         <!-- First time login (Or profile not filled out) -->
         
         <%= render '/homepage/register_input' %>

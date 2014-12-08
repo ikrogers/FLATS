@@ -6,7 +6,7 @@ class HomepageController < ApplicationController
   def register_input
 
   end
-  
+
   def register_clear
     @user = current_user
     @gender = params[:gender] rescue nil
@@ -16,19 +16,16 @@ class HomepageController < ApplicationController
     @first = params[:first] rescue nil
     @last = params[:last] rescue nil
 
-    if @gender != nil && @height != nil
-      if @weight != nil && @birthday != nil
-        if @first != nil && @last != nil
-        @user.update_attributes(:gender => @gender, :height=> @height, :weight => @weight, :bday => @birthday, :fname => @first, :lname => @last)
-        end
-      end
-    end
-
     respond_to do |format|
       if @gender != nil && @height != nil
-        if @weight != nil && @birthday != nil
-          if @first != nil && @last != nil
-          format.html{redirect_to authenticated_root_path, notice: 'Thank you! Enjoy!'}
+        if @height.to_f > 36 && @height.to_f < 250
+          if @weight.to_f > 0 && @weight.to_f < 2000
+            if @weight != nil && @birthday != nil
+              if @first != nil && @last != nil
+                 @user.update_attributes(:gender => @gender, :height=> @height, :weight => @weight, :bday => Date.parse(@birthday.to_s), :fname => @first, :lname => @last)
+                format.html{redirect_to authenticated_root_path, notice: 'Thank you! Enjoy!'}
+              end
+            end
           end
         end
       end
