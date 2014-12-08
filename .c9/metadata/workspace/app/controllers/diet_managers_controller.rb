@@ -1,1 +1,0 @@
-{"filter":false,"title":"diet_managers_controller.rb","tooltip":"/app/controllers/diet_managers_controller.rb","ace":{},"undoManager":{"mark":0,"position":-1,"stack":[]},"timestamp":1418053531188,"hash":"a8a83ab471b9ef1e91a6ba2eff131e33a1b53410"}
