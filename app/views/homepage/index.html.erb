@@ -41,6 +41,17 @@
 
 <% elsif current_user.u_type == 1 %>
     <!-- User view -->
+    <% @to_purge = DietManager.find(:all, :conditions => ["created_at < ?", 1.days.ago]) %>
+    <% @to_purge.each do |purge| %>
+        <% @record = DietManager.where(id: purge.id) %>
+        <% DietManager.destroy(@record) %>
+    <% end %>
+    
+    <% @to_purge = ExerciseManager.find(:all, :conditions => ["created_at < ?", 1.days.ago]) %>
+    <% @to_purge.each do |purge| %>
+        <% @record = ExerciseManager.where(id: purge.id) %>
+        <% ExerciseManager.destroy(@record) %>
+    <% end %>
     
     <% if current_user.gender == nil || current_user.gender == "" %>
         <!-- First time login (Or profile not filled out) -->
@@ -169,7 +180,7 @@
                                                         <h4 class="modal-title" id="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_label"><%= d.name %></h4>
                                                       </div>
                                                       <div class="modal-body">
-                                                        Calories: <%= d.calories %>
+                                                        <b>Calories:</b> <%= d.calories %>
                                                       </div>
                                                       <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -222,8 +233,8 @@
                                                         <h4 class="modal-title" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label"><%= e.name %></h4>
                                                       </div>
                                                       <div class="modal-body">
-                                                        Calories Burned: <%= e.calories %><br />
-                                                        Instructions: <%= simple_format h e.descr %>
+                                                        <b>Calories Burned:</b> <%= e.calories %><br />
+                                                        <b>Instructions:</b> <%= simple_format h e.descr %><br />
                                                         <iframe width="100%" height="315px" src="//www.youtube.com/embed/<%= e.video %>" frameborder="0" allowfullscreen></iframe>>
                                                       </div>
                                                       <div class="modal-footer">

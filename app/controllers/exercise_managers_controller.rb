@@ -24,7 +24,7 @@ class ExerciseManagersController < ApplicationController
       @em = ExerciseManager.create(user_id: @user, exercise_id: e.id)
     end
     respond_to do |format|
-      format.html { redirect_to exercise_managers_path }
+      format.html { redirect_to authenticated_root_path }
       format.json { render action: 'show', status: :created, location: @diet }
     end
   end
@@ -46,7 +46,7 @@ class ExerciseManagersController < ApplicationController
     @em = ExerciseManager.find_by_id(params[:id])
     @em.destroy
     respond_to do |format|
-      format.html { redirect_to exercise_managers_url }
+      format.html { redirect_to authenticated_root_path }
       format.json { head :no_content }
     end
   end
