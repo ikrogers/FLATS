@@ -37,7 +37,7 @@ class DietManagersController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { redirect_to diet_managers_path }
+      format.html { redirect_to authenticated_root_path }
       format.json { render action: 'show', status: :created, location: @diet }
     end
   end
@@ -102,7 +102,7 @@ class DietManagersController < ApplicationController
     @diet_manager = DietManager.find_by_id(params[:id])
     @diet_manager.destroy
     respond_to do |format|
-      format.html { redirect_to diet_managers_url }
+      format.html { redirect_to authenticated_root_path }
       format.json { head :no_content }
     end
   end
