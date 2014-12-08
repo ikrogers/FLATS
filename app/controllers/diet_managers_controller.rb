@@ -61,11 +61,11 @@ class DietManagersController < ApplicationController
 
   def diet_output
     @user = current_user
-    @weight = params[:weight] rescue nil
-    @height = params[:height] rescue nil
+    @w = params[:weight] rescue nil
+    @h = params[:height] rescue nil
     @activity = params[:activity].to_s
-    @weight = (@weight.to_f * 0.45359237)
-    @height = (@height.to_f * 0.39370)
+    @weight = (@w.to_f * 0.45359237)
+    @height = (@h.to_f * 0.39370)
     
     if @user.gender = "Male"
       @bmr = (88.362 + (13.397 * @weight.to_f) + (4.799 * @height.to_f) - (5.677 * @user.age.to_f))
@@ -74,15 +74,15 @@ class DietManagersController < ApplicationController
     end
 
     if @activity == "Little to no exercise"
-      @user.update_attributes(:diet_score => (@bmr.to_f * 1.2))
+      @user.update_attributes(:diet_score => (@bmr.to_f * 1.2), :weight => @w, :heihgt => @h)
     elsif @activity == "Light exercise (1–3 days per week)"
-      @user.update_attributes(:diet_score => (@bmr.to_f * 1.375))
+      @user.update_attributes(:diet_score => (@bmr.to_f * 1.375), :weight => @w, :heihgt => @h)
     elsif @activity == "Moderate exercise (3–5 days per week)"
-      @user.update_attributes(:diet_score => (@bmr.to_f * 1.55))
+      @user.update_attributes(:diet_score => (@bmr.to_f * 1.55), :weight => @w, :heihgt => @h)
     elsif @activity == "Heavy exercise (6–7 days per week)"
-      @user.update_attributes(:diet_score => (@bmr.to_f * 1.725))
+      @user.update_attributes(:diet_score => (@bmr.to_f * 1.725), :weight => @w, :heihgt => @h)
     elsif @activity == "Very heavy exercise (twice per day, extra heavy workouts"
-      @user.update_attributes(:diet_score => (@bmr.to_f * 1.9))
+      @user.update_attributes(:diet_score => (@bmr.to_f * 1.9), :weight => @w, :heihgt => @h)
     else
       @flag = "error"
     end
