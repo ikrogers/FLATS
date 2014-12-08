@@ -25,11 +25,11 @@
 		</div>
 		<div class="form-group">
 			<%= label_tag "Weight(lbs)" %>
-			<%= number_field_tag :weight,nil, in: 50...601, class: 'form-control' %>
+			<%= number_field_tag :weight,nil, in: 50..600, class: 'form-control' %>
 		</div>
 		<div class="form-group">
 			<%= label_tag "Height(in)" %>
-			<%= number_field_tag :height,nil, in: 36...121, class: 'form-control' %>
+			<%= number_field_tag :height,nil, in: 36..12, class: 'form-control' %>
 		</div>
 		<%= submit_tag 'Continue', :class => 'btn btn-primary center-block' %>
 		<% end %>

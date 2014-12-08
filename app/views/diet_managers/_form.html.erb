@@ -9,13 +9,13 @@
       </ul>
     </div>
   <% end %>
-  <table class="table">
+  <table class="table table-condensed" style="width: 70%; margin-left: 15%">
     <thead>
       <tr>
-        <td></td>
-        <td>Diet</td>
-        <td>Description</td>
-        <td><center>Calories</center></td>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Diet</th>
+        <th>Description</th>
+        <th><center>Calories</center></th>
       </tr>
     </thead>
     <tbody>
@@ -27,11 +27,30 @@
           <td><%= d.name %></td>
           <td><%= d.descr %></td>
           <td><center><%= d.calories %></center></td>
+          <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
         </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_label"><%= d.name %></h4>
+              </div>
+              <div class="modal-body">
+                <b>Calories Burned:</b> <%= d.calories %><br />
+                <b>Instructions:</b> <%= simple_format h d.descr %><br />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </tbody>
   </table>
-  <div class="actions">
+  <div class="actions" style="margin-left: 15%;">
     <%= f.submit "Add Diets" %>
   </div>
 <% end %>

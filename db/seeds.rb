@@ -10,6 +10,7 @@ User.create(:email => "ik@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :
 User.create(:email => "ik2@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3, :gender => "Male",:bday => '1991-10-10')
 User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "789789789", :password_confirmation => "789789789", :u_type => 2, :gender => "Male", :bday => '1991-10-10')
 
+
 #Exercises are labeled 1-6 in intensity. I split them together into their different groups based on calories lost more than anything ele, just to be simple
 
 #Exercises with intensity 1 - >= 100 calories lost and relatively easy
@@ -20,7 +21,8 @@ Exercise.create(
         3.) Hold this position for 15 to 30 seconds then return back to the starting position.
         4.) Repeat for as long and many reps as desired.", 
     :calories => 100, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "ZiNXOE5EsZw")
 
 Exercise.create(
     :name => "Ankle Circle", 
@@ -32,14 +34,16 @@ Exercise.create(
         
         3.) Reverse the direction (counter-clockwise) and switch feet.", 
     :calories => 60, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "jsy41du9I5g")
 
 Exercise.create(
     :name => "Walking (2mph/30minutes)", 
     :descr => "Running is one of the most common and effect forms of exercise for muscle toning, weight loss and keeping your lungs and body in shape.
         Running improves on conditioning the body, endurance, stamina, speed, strength in the legs and core, as well as improving one's posture.", 
     :calories => 90, 
-    :intensity => 1)
+    :intensity => 1,
+    :video => "ndVjwkaLGDk")
     
 Exercise.create(
     :name => "Tai Chi(60 minutes)",
@@ -59,7 +63,8 @@ Exercise.create(
     :descr => "Running is one of the most common and effect forms of exercise for muscle toning, weight loss and keeping your lungs and body in shape.
         Running improves on conditioning the body, endurance, stamina, speed, strength in the legs and core, as well as improving one's posture.", 
     :calories => 120, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "wRkeBVMQSgg")
 
 Exercise.create(
     :name => "Behind Head Chest Stretch", 
@@ -71,13 +76,15 @@ Exercise.create(
         
         4.) Then afterwards have your partner pull back on your elbows again but easily this time to help stretch out the chest muscles.", 
     :calories => 180, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "xEai_DxD-Nw")
 
 Exercise.create(
     :name => "Pilates", 
     :descr => "Pilates are an exercise that focus upon developing strength through the core of the body as well as increasing flexibility and coordination.", 
     :calories => 180, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "lCg_gh_fppI")
 
 Exercise.create(
     :name => "Abdominal Pendulum", 
@@ -89,26 +96,30 @@ Exercise.create(
         
         4.) Repeat for as many reps and sets as desired.", 
     :calories => 180, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "bwV3-gTy4Aw")
     
 Exercise.create(
     :name => "Jumping Rope", 
     :descr => "Jump rope is a great cardio exercise that helps burn a significant amount of calories through repeated jumping motion and keeping the body moving.", 
     :calories => 200, 
-    :intensity => 2)
+    :intensity => 2,
+    :video => "60Ug5rnTYfk")
 
 #Exercises with intensity 3    
 Exercise.create(
     :name => "Indoor Cycling", 
     :descr => "Indoor cycling is a form of exercise that focuses on endurance, stamina, strength, intensity, intervals and recovery.", 
     :calories => 200, 
-    :intensity => 3)
+    :intensity => 3,
+    :video => "qrwfQ9Qwai4")
     
 Exercise.create(
     :name => "Aerobic", 
     :descr => "Aerobic Exercise focuses upon cardiovascular fitness, muscle strength and endurance by performing aerobic workouts.", 
     :calories => 230, 
-    :intensity => 3)
+    :intensity => 3,
+    :video => "QQSYo_pC-QA")
     
 Exercise.create(
     :name => "Swimming (20 minutes)",
@@ -121,7 +132,8 @@ Exercise.create(
     :descr => "Running is one of the most common and effect forms of exercise for muscle toning, weight loss and keeping your lungs and body in shape.
         Running improves on conditioning the body, endurance, stamina, speed, strength in the legs and core, as well as improving one's posture.", 
     :calories => 265,
-    :intensity => 3)
+    :intensity => 3,
+    :video => "wRkeBVMQSgg")
     
 Exercise.create(
     :name => "Volleyball (30 minutes)",
@@ -134,7 +146,8 @@ Exercise.create(
     :name => "Aerobics (moderate/30minutes)", 
     :descr => "Aerobic Exercise focuses upon cardiovascular fitness, muscle strength and endurance by performing aerobic workouts.", 
     :calories => 232, 
-    :intensity => 4)
+    :intensity => 4,
+    :video => "QQSYo_pC-QA")
     
 Exercise.create(
     :name => "Bench Dip", 
@@ -148,26 +161,30 @@ Exercise.create(
         
         5.) Repeat for as many reps and sets as desired.", 
     :calories => 290, 
-    :intensity => 4)
+    :intensity => 4,
+    :video => "c3ZGl4pAwZ4")
     
 Exercise.create(
     :name => "Mountain Biking", 
     :descr => "Mountain biking is a sport that consists of riding outdoors, mostly off-road courses and over rough terrain.
         It requires stamina, core strength, endurance, balance, coordination and handling skills.", 
     :calories => 240, 
-    :intensity => 4)
+    :intensity => 4,
+    :video => "F1QrJ3_5MyU")
     
 Exercise.create(
     :name => "Uphill Running (3mph/30 minutes)",
     :descr => "Running uphill makes the traditional running exercise more difficult and burns more calories for less time.",
     :calories => 400,
-    :intensity => 4)
+    :intensity => 4,
+    :video => "wRkeBVMQSgg")
     
 Exercise.create(
     :name => "Sprinting (2.5 minutes)",
     :descr => "Sprinting is hight intensity and gets your heart rate going fast, burning calories in a shorter interval of time.",
     :calories => 200,
-    :intensity => 4)
+    :intensity => 4,
+    :video => "wRkeBVMQSgg")
 
 #Exercises with intensity 5
 Exercise.create(
@@ -186,13 +203,15 @@ Exercise.create(
         
         7.) Repeat for as many reps and sets as desired.", 
     :calories => 320, 
-    :intensity => 5)
+    :intensity => 5,
+    :video => "CavZeuCS56g")
     
 Exercise.create(
     :name => "Jogging (6mph/30 minutes)",
     :descr => "Same as all the other running stuff",
     :calories => 330,
-    :intensity => 5)
+    :intensity => 5,
+    :video => "wRkeBVMQSgg")
 
 #Exercises with intensity 6
 Exercise.create(
@@ -207,13 +226,15 @@ Exercise.create(
         
         6.) Repeat for as many reps and sets as desired.", 
     :calories => 200, 
-    :intensity => 6)
+    :intensity => 6,
+    :video => "RAO7OG077Ac")
 
 Exercise.create(
     :name => "Aerobics (intense/30 minutes)",
     :descr => "Same as the other aerobics put tougher blah blah",
     :calories => 500,
-    :intensity => 6)
+    :intensity => 6,
+    :video => "QQSYo_pC-QA")
 
 Diet.create(:name => "Apple (Golden Delicious)", 
     :descr => "Serving weights 242 gramms and contain 126 colories with significant dietary fiber and modest vitamin C content", 
@@ -321,4 +342,3 @@ Diet.create(:name => "Bread",
     :descr => "is a staple food prepared from dough of flour and water, usually by baking", 
     :calories => 24, 
     :intensity => 1)
-
