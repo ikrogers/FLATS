@@ -5,10 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(:email => "ikrogers@valdosta.edu", :fname => "Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 2, :gender => "Male")
-User.create(:email => "ik@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 1,:gender => "Female")
-User.create(:email => "ik2@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3)
-User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "789789789", :password_confirmation => "789789789", :u_type => 2)
+User.create(:email => "ikrogers@valdosta.edu", :fname => "Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 2, :gender => "Male",:bday => '1991-10-10')
+User.create(:email => "ik@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Female",:bday => '1991-10-10')
+User.create(:email => "ik2@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3, :gender => "Male",:bday => '1991-10-10')
+User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "789789789", :password_confirmation => "789789789", :u_type => 2, :gender => "Male", :bday => '1991-10-10')
 
 #Exercises are labeled 1-6 in intensity. I split them together into their different groups based on calories lost more than anything ele, just to be simple
 
