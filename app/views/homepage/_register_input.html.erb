@@ -1,61 +1,40 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title">Thank you! Please finish inputting your information, it will only take a second!</h3>
-	</div>
-	<div class="panel-body">
-		<div class="container">
-			<body>
-				<a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionThree">
-				<p class='text-muted'>Detailed Instructions (Please read first if doing this first time!)</p></a>
-				<div id="accordionThree" class="panel-collapse collapse">
-					<div class="panel-body">
-						<h4> Thank you! Please finish inputting your information, it will only take a second! </h4>
-					</div>
-				</div>
-				<%= form_tag(register_clear_path) do %>
-					<div>
-						<%= label_tag "Enter your first name" %>
-						<br><i> ~ What should we call you?</i><br>
-						<%= text_field_tag :first, nil, :class => 'form-control'%>
-					</div>
-					<div>
-						<%= label_tag "Enter your last name" %>
-						<br><i> ~ ...To address you more formally</i><br>
-					<%= text_field_tag :last, nil, :class => 'form-control'%>
-					</div>
-					<div>
-						<%= label_tag "Select your gender" %>
-						<br><i> We need this to calculate your scores Male or Female</i><br>
-						<%= radio_button_tag :gender, 'male', :checked => true %> 
-						<%= label :gender, 'Male' %>
-						<%= radio_button_tag :gender, 'female' %>
-						<%= label :gender, 'Female' %>
-					</div>
-					<div>
-						<%= label_tag "Enter your date of birth" %>
-						<br><i>So we can send you birthday wishes!</i><br>
-						<%= date_field_tag :birth, nil, :class => 'form-control'%>
-					</div>
-					<div>
-						<%= label_tag "Enter your weight" %>
-						<br><i>in pounds</i><br>
-						<%= number_field_tag :weight, nil, in: 50..400, class: 'form-control' %>
-					</div>
-					<div>
-						<%= label_tag "Enter your height" %>
-						<br><i>in inches</i><br>
-						<%= number_field_tag :height, nil, in: 36...120, class: 'form-control' %>
-					</div>
-					<div class="actions">
-						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>
-					</div>
-				<% end %>
-			</div>
-		</body>
+<div id="bg">
+	<div class="authform">
+		<%= form_tag(register_clear_path) do %>
+		<h3 style="text-align: center">Additional Information</h3>
+		<div class="form-group">
+			<%= label_tag "First Name" %>
+			<%= text_field_tag :first,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Last Name" %>
+			<%= text_field_tag :last,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Birth" %>
+			<%= date_field :birth ,nil, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Gender" %><br>
+			<%= radio_button_tag :gender, 'Male' %>
+			 <%= label :gender, 'Male' %>
+            <%= radio_button_tag :gender, 'Female' %>
+      		<%= label :gender, 'Female' %>
+            
+
+		</div>
+		<div class="form-group">
+			<%= label_tag "Weight(lbs)" %>
+			<%= number_field_tag :weight,nil, in: 50...601, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= label_tag "Height(in)" %>
+			<%= number_field_tag :height,nil, in: 36...121, class: 'form-control' %>
+		</div>
+		<%= submit_tag 'Continue', :class => 'btn btn-primary center-block' %>
+		<% end %>
 	</div>
 </div>
-
-
 <style>
 	#bg{
 	background: url(/assets/metal.jpg) center no-repeat;
@@ -67,3 +46,4 @@
 	min-height: 100%;
 	background-size: 100% auto;
 </style>
+
