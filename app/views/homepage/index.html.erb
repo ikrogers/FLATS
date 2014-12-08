@@ -28,9 +28,10 @@
                 <% User.all.each do |u| %>
                    <% if u.diet_fitness_flag > 0 %>
                         <tr>
+                            <% @user = User.find_by_id(u.id) %>
                             <td><%= u.fullname %></td>
-                            <td><%= button_to 'Train', new_diet_manager_path(:user => u), :method => :get, :class => 'btn btn-default' %></td>
-                            <td><%= button_to 'Train', new_exercise_manager_path(:user => u), :method => :get, :class => 'btn btn-default' %></td>
+                            <td><%= link_to 'Train', new_diet_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-default' %></td>
+                            <td><%= link_to 'Train', new_exercise_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-default' %></td>
                         </tr>
                     <% end %>
                 <% end %>
@@ -66,7 +67,7 @@
                         <div class="container">
                             <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionStats">
                             <p class='text-muted'> muted text inside the closed container </p></a> -->
-                            <div id="accordionStats" class="panel-collapse collapse">
+                            <div id="accordionStats" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <table class="table">
                                         <tr><td><p>Age: <%= current_user.age %></p>
@@ -74,7 +75,6 @@
                                             <% @feet = current_user.height / 12 %>
                                             <% @inches = current_user.height % 12 %>
                                             <p>Height: <%= "%d'%d\"" % [@feet, @inches] %></p>
-                                            <p>Gender: <%= current_user.gender %></p>
                                             <p>Fitness Score: <%= (@fscore.nil? || @fscore.to_i == 0) ? (button_to "Take Fitness Test".html_safe, fitness_info_input_path, :method => :get, :class => "btn btn-danger") : @fscore %>
                                             <% if ( @fscore.to_i != 0) %>
                                                 <i><span class="
@@ -110,13 +110,13 @@
                         <div class="container">
                             <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionCharts">
                             <p class='text-muted'> muted text inside the closed container </p></a> -->
-                            <div id="accordionCharts" class="panel-collapse collapse">
+                            <div id="accordionCharts" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <table class="table">
                                         <tr><td>
                                             <% if current_user.exercises.count > 0 || current_user.diets.count > 0 %>
-                                                <span style="float: left; width: 50%;"><%= pie_chart current_user.exercises.group(:name).sum(:calories)  %></span>
                                                 <span style="float: left; width: 50%;"><%= pie_chart current_user.diets.group(:name).sum(:calories) %></span>
+                                                <span style="float: left; width: 50%;"><%= pie_chart current_user.exercises.group(:name).sum(:calories)  %></span>
                                             <% end %>
                                         </td></tr>
                                     </table>
