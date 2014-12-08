@@ -1,0 +1,194 @@
+<div id="cat">
+	<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="0" id="bs-carousel">
+		<!-- Overlay -->
+		<div class="overlay"></div>
+
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+			<li data-target="#bs-carousel" data-slide-to="1"></li>
+			<li data-target="#bs-carousel" data-slide-to="2"></li>
+		</ol>
+
+		<!-- Wrapper for slides -->
+
+		<div class="carousel-inner">
+			<div class="item slides active">
+				<div class="slide-1"></div>
+				<div class="hero">
+	<hgroup>
+		<div class="container">	
+			<div class="row">
+			  	<div class="col-lg-5 col-md-5 col-xs-5"><img src="/assets/shot1.jpg" class="img-rounded" alt="Responsive image"></div>
+			  	<div class="col-lg-1 col-md-5 col-xs-1"></div>
+			  	<h1>Second</h1>
+			  	<div class="col-lg-3 col-md-5 col-xs-3" style="background-color:lavender;">
+			  	Description here..Description here..Description here..Description here..
+			  	Description here..Description here..Description here..Description here..
+			  	Description here..Description here..Description here..Description here..
+			  	</div>
+			</div>
+			<div class="row">
+			<p></p>
+			</div>
+			<div class="row">
+					<div class="col-lg-5 col-md-5 col-xs-5"><img src="/assets/shot2.jpg" class="img-rounded" alt="Responsive image"></div>
+					<div class="col-lg-1 col-md-5 col-xs-1"></div>
+					<h1>Second</h1>
+					<div class="col-lg-3 col-md-5 col-xs-3" style="background-color:lavender;">
+						Description here..Description here..Description here..Description here..
+						Description here..Description here..Description here..Description here..
+						Description here..Description here..Description here..Description here..
+					</div>
+			</div>
+		</div>
+	</hgroup>
+</div>
+			</div>
+			<div class="item slides">
+				<div class="slide-2"></div>
+				<div class="hero">
+					<hgroup>
+						<h2 style="text-align: center; color: white">Log In!</h2>
+						<%= render 'login'%>
+					</hgroup>
+				</div>
+			</div>
+			<div class="item slides">
+				<div class="slide-3"></div>
+				<div class="hero">
+					<div>
+						<h2 style="text-align: center; color: white">Register!</h2>
+						<%= render 'devise/registrations/regnew'%>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!--  -->
+<!--           CSS              -->
+
+<style>
+	#cat {
+		left: 0;
+		right: 0;
+		position: absolute;
+		min-width: 100%;
+		min-height: 100%;
+	}
+	/********************************/
+	/*       Fade Bs-carousel       */
+	/********************************/
+	.fade-carousel {
+		position: relative;
+		height: 100vh;
+	}
+	.fade-carousel .carousel-inner .item {
+		height: 100vh;
+	}
+	.fade-carousel .carousel-indicators > li {
+		margin: 50px;
+		/*background-color: #f39c12;*/
+		width: 30px;
+		height: 30px;
+		opacity: .5;
+		background: grey;
+	}
+	.fade-carousel .carousel-indicators > li.active {
+		width: 39px;
+		height: 20px;
+		opacity: 1;
+		background: grey;
+	}
+
+	/********************************/
+	/*          Hero Headers        */
+	/********************************/
+	.hero {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		z-index: 10;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		-moz-transform: translate3d(-50%,-50%,0);
+		-ms-transform: translate3d(-50%,-50%,0);
+		-o-transform: translate3d(-50%,-50%,0);
+		transform: translate3d(-50%,-50%,0);
+	}
+	.hero h1 {
+		font-size: 6em;
+		font-weight: bold;
+		margin: 0;
+		padding: 0;
+	}
+
+	.fade-carousel .carousel-inner .item .hero {
+		opacity: 0;
+		-webkit-transition: 2s all ease-in-out .1s;
+		-moz-transition: 2s all ease-in-out .1s;
+		-ms-transition: 2s all ease-in-out .1s;
+		-o-transition: 2s all ease-in-out .1s;
+		transition: 2s all ease-in-out .1s;
+	}
+	.fade-carousel .carousel-inner .item.active .hero {
+		opacity: 1;
+		-webkit-transition: 2s all ease-in-out .1s;
+		-moz-transition: 2s all ease-in-out .1s;
+		-ms-transition: 2s all ease-in-out .1s;
+		-o-transition: 2s all ease-in-out .1s;
+		transition: 2s all ease-in-out .1s;
+	}
+
+	/********************************/
+	/*            Overlay           */
+	/********************************/
+
+	/********************************/
+	/*          Custom Buttons      */
+	/********************************/
+	.btn.btn-lg {
+		padding: 10px 40px;
+	}
+	.btn.btn-hero, .btn.btn-hero:hover, .btn.btn-hero:focus {
+		color: #f5f5f5;
+		background-color: #1abc9c;
+		border-color: #1abc9c;
+		outline: none;
+		margin: 20px auto;
+	}
+
+	/********************************/
+	/*       Slides backgrounds     */
+	/********************************/
+	.fade-carousel .slides .slide-1, .fade-carousel .slides .slide-2, .fade-carousel .slides .slide-3 {
+		height: 100vh;
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.fade-carousel .slides .slide-1 {
+		background-image: url(/assets/theme1.jpg);
+	}
+	.fade-carousel .slides .slide-2 {
+		background-image: url(/assets/theme2.jpg);
+	}
+	.fade-carousel .slides .slide-3 {
+		background-image: url(/assets/bike.jpg);
+	}
+
+	/********************************/
+	/*          Media Queries       */
+	/********************************/
+	@media screen and (min-width: 900px) {
+		.hero {
+			width: 900px;
+		}
+	}
+	@media screen and (max-width: 600px) {
+		.hero h1 {
+			font-size: 4em;
+		}
+	}
+</style>

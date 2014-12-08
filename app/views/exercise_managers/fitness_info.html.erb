@@ -1,0 +1,44 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Alternate PT/LLAB User From</h3>
+	</div>
+	<div class="panel-body">
+		<div class="container">
+			<body>
+			<a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionThree">
+			<p class='text-muted'>
+				Detailed Instructions (Please read first if doing this first time!)
+			</p></a>
+			<div id="accordionThree" class="panel-collapse collapse">
+				<div class="panel-body">
+					<h4> Intructions for your physical test: </h4>
+					<p>
+						This test is relatively simple. You will require either a treadmill with distance readout or a track where you can estimate distance.
+					</p>
+					<p>
+						This test measures your relative fitness level based on your VOmax. In other words this is an aerobic estimation of your body's health level
+					</p>
+					<p>
+						Fill out your age and then please run/walk for 12 minutes and the record your distance (in miles so if you run 3 laps its .75 mile) in the field below after which clicking submit.
+					</p>
+				</div>
+			</div>
+					<%= form_tag(fitness_info_output_path) do%>
+					
+					<div>
+						<%= label_tag "Enter distance traveled in 12 minutes" %>
+						<br>
+						<i> ~How far have you gone in 12 minutes use miles ex 1.5?</i>
+						<br>
+						<%= text_field_tag :distance, nil, class: 'form-control' %>
+					</div>
+					<div class="actions">
+						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>
+						<%= link_to 'Abandon Test', authenticated_root_path, :class => 'btn btn-default' %>
+					</div>
+					<% end %>
+				</div>
+			</body>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="encapsulate">
+  <center>
+    <p>
+      <strong>Food:</strong>
+      <%= @diet.name %>
+    </p>
+  </center>
+  
+  <p>
+    <strong>Description:</strong>
+    <%= @diet.descr %>
+  </p>
+  
+  <p>
+    <strong>Calories:</strong>
+    <%= @diet.calories %>
+  </p>
+  <center>
+    <% if current_user.u_type > 1  %>
+      <%= link_to 'Edit', edit_diet_path(@diet) %>
+    <% end %>
+  </center>
+</div>

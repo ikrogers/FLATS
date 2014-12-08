@@ -1,0 +1,33 @@
+<div>
+  <center>
+    <h3>Listing exercises</h3>
+  </center>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Descr</th>
+        <th>Calories</th>
+        <th>Intensity</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @exercises.each do |exercise| %>
+        <tr>
+          <td><%= exercise.name %></td>
+          <td><%= exercise.descr %></td>
+          <td><%= exercise.calories %></td>
+          <td><%= exercise.intensity %></td>
+          <td><%= link_to 'Show', exercise %></td>
+          <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
+          <td class="danger"><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Create new exercise', new_exercise_path, :class => "btn btn-default" %>
+</div>

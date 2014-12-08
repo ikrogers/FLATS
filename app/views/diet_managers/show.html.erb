@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>User:</strong>
+  <%= @diet_manager.user.fullname %>
+</p>
+
+<p>
+  <strong>Diet:</strong>
+  <%= @diet_manager.diet.name %>
+</p>
+<%= link_to 'Edit', edit_diet_manager_path(@diet_manager) %>
