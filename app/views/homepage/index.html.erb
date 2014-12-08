@@ -154,9 +154,10 @@
                                         <table class="table">
                                             <% current_user.diets.each do |d| %>
                                                 <tr>
+                                                    <% @diet_manager = DietManager.where(diet_id: d.id, user_id: current_user.id).first %>
                                                     <td><%= d.name %></td>
                                                     <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
-                                                    <td><%= button_to 'Remove meal', d, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                                    <td><%= button_to 'Remove meal', @diet_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                                 </tr>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
@@ -206,9 +207,10 @@
                                         <table class="table table-condensed">
                                             <% current_user.exercises.each do |e| %>
                                                 <tr>
+                                                    <% @exercise_manager = ExerciseManager.where(exercise_id: e.id, user_id: current_user.id).first %>
                                                     <td><%= e.name %></td>
                                                     <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
-                                                    <td><%= button_to 'Remove exercise', e, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                                    <td><%= button_to 'Remove exercise', @exercise_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                                 </tr>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
@@ -219,7 +221,7 @@
                                                         <h4 class="modal-title" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label"><%= e.name %></h4>
                                                       </div>
                                                       <div class="modal-body">
-                                                        Calories Burned: <%= e.calories %>
+                                                        Calories Burned: <%= e.calories %><br />
                                                         Instructions: <%= simple_format h e.descr %>
                                                         <iframe width="100%" height="315px" src="//www.youtube.com/embed/<%= e.video %>" frameborder="0" allowfullscreen></iframe>>
                                                       </div>
