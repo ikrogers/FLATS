@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
 <% if current_user.u_type == 2 %>
     <!-- Administrator view -->
+    
     <h3>Move all these navigation links to navigation...</h3>
     <%= link_to "Diet Management", diets_path %><br />
     <%= link_to "Exersise Management", exercises_path %><br />
@@ -41,6 +42,7 @@
 
 <% elsif current_user.u_type == 1 %>
     <!-- User view -->
+    
     <% @to_purge = DietManager.find(:all, :conditions => ["created_at < ?", 1.days.ago]) %>
     <% @to_purge.each do |purge| %>
         <% @record = DietManager.where(id: purge.id) %>

@@ -23,14 +23,14 @@
 						<br>
 						<i> ~Confirm your crrent weight in pounds</i>
 						<br>
-						<%= text_field_tag :weight,nil, :value => current_user.weight, :class => 'form-control'%>
+						<%= number_field_tag :weight, nil, :value => current_user.weight, in: 50..600, :class => 'form-control'%>
 					</div>
 					<div>
 						<%= label_tag "Enter your height (in)" %>
 						<br>
 						<i> ~Confirm your current height in inches?</i>
 						<br>
-						<%= text_field_tag :height, nil, :value => current_user.height, class: 'form-control' %>
+						<%= number_field_tag :height, nil, :value => current_user.height, in: 36..120, class: 'form-control' %>
 					</div>
 					<div>
 						<%= label_tag "Indicate your physical activity level" %>

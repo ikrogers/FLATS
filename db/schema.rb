@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20141109174845) do
     t.text     "name",       default: "",  null: false
     t.text     "descr",      default: "",  null: false
     t.decimal  "calories",   default: 0.0, null: false
+    t.decimal  "intensity",  default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
