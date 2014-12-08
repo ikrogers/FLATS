@@ -1,0 +1,47 @@
+<%= form_for(@exercise_manager) do |f| %>
+  <% if @exercise_manager.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exercise_manager.errors.count, "error") %> prohibited this exercise_manager from being saved:</h2>
+      <ul>
+        <% @exercise_manager.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <td></td>
+        <td>Exercise</td>
+        <td><center>Intensity</center></td>
+        <td><center>Calories Burned</center></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user = (params[:user].nil? ? current_user.id : params[:user]) %>
+      <% Exercise.all.each do |e| %>
+        <% if ((fit_rating(@user) == "Extremely Poor" && e.intensity <= 1) ||
+          (fit_rating(@user) == "Below Average" && e.intensity <= 2) ||
+          (fit_rating(@user) == "Average" && e.intensity <= 3) ||
+          (fit_rating(@user) == "Above Average" && e.intensity <= 4) ||
+          (fit_rating(@user) == "Good" && e.intensity <= 5) ||
+          (fit_rating(@user) == "Excellent" && e.intensity <= 6)) %>
+            <tr>
+               <%= hidden_field_tag :trainee, @user.id %>
+               <td><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
+               <td><%= e.name %></td>
+               <td><center><%= e.intensity %></center></td>
+               <td><center><%= e.calories %></center></td>
+               <td><%= link_to "Show", e, :class => "btn btn-default" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+    </tbody>
+  </table>
+  
+  <div class="actions">
+    <%= f.submit "Add exercises" %>
+  </div>
+<% end %>

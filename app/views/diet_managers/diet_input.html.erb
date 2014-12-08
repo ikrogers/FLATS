@@ -1,0 +1,51 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Alternate PT/LLAB User From</h3>
+	</div>
+	<div class="panel-body">
+		<div class="container">
+			<body>
+			<a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionThree">
+			<p class='text-muted'>
+				Detailed Instructions (Please read first if doing this first time!)
+			</p></a>
+			<div id="accordionThree" class="panel-collapse collapse">
+				<div class="panel-body">
+					<h4> Intructions for diet score: </h4>
+					<p>
+						Please answer the following questions. Your weight and height as indicated on your profile will be updated
+					</p>
+				</div>
+			</div>
+					<%= form_tag(diet_info_output_path) do%>
+					<div>
+						<%= label_tag "Enter your weight(lbs)" %>
+						<br>
+						<i> ~Confirm your crrent weight in pounds</i>
+						<br>
+						<%= text_field_tag :weight,nil, :value => current_user.weight, :class => 'form-control'%>
+					</div>
+					<div>
+						<%= label_tag "Enter your height (in)" %>
+						<br>
+						<i> ~Confirm your current height in inches?</i>
+						<br>
+						<%= text_field_tag :height, nil, :value => current_user.height, class: 'form-control' %>
+					</div>
+					<div>
+						<%= label_tag "Indicate your physical activity level" %>
+						<br>
+						<i> ~(Replace with a dropdown) Use this to update your height. Please use inches ex: 6ft 1in = 73</i>
+						<br>
+						<%= select_tag(:activity, options_for_select([["Little to no exercise"],["Light exercise (1–3 days per week)"],["Moderate exercise (3–5 days per week)"],["Heavy exercise (6–7 days per week)"],["Very heavy exercise (twice per day, extra heavy workouts"]]), { :class => 'form-control',  :multiple => false})%>
+					</div>
+					<div class="actions">
+						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>
+						<%= link_to 'Abandon Test', authenticated_root_path, :class => 'btn btn-default' %>
+					</div>
+					<% end %>
+				</div>
+			</body>
+		</div>
+	</div>
+</div>
