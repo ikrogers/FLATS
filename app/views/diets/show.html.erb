@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<div class="encapsulate">
+<div class="panel panel-primary">
   <center>
     <p>
       <strong>Food:</strong>
@@ -18,7 +18,9 @@
   </p>
   <center>
     <% if current_user.u_type > 1  %>
-      <%= link_to 'Edit', edit_diet_path(@diet) %>
+      <%= link_to 'Edit', edit_diet_path(@diet) %>|
+      <%= link_to 'Index', diets_path %>
+
     <% end %>
   </center>
 </div>

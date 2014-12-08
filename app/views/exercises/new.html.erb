@@ -1,5 +1,44 @@
-<h1>New exercise</h1>
+<div class='authform'>
+	<%= form_for(@exercise) do |f| %>
+	<h3 style="text-align: center">New Exercise</h3>
+	<% if @exercise.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
 
-<%= render 'form' %>
+		<ul>
+			<% @exercise.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
 
-<%= link_to 'Back', exercises_path %>
+	<div class="form-group">
+		<%= f.label :name %>
+		<br>
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label "Description" %>
+		<br>
+		<%= f.text_area :descr, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label :calories %>
+		<br>
+		<%= f.text_field :calories, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label :intensity %>
+		<br>
+		<%= f.number_field :intensity, class: 'form-control' %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Submit", :class => 'btn btn-primary center-block'  %>
+	</div>
+
+	<%= link_to 'Back', exercises_path %>
+	<% end %>
+</div>
