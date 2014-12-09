@@ -22,7 +22,8 @@ class HomepageController < ApplicationController
           if @weight.to_f > 0 && @weight.to_f < 2000
             if @weight != nil && @birthday != nil
               if @first != nil && @last != nil
-                 @user.update_attributes(:gender => @gender, :height=> @height, :weight => @weight, :bday => Date.parse(@birthday.to_s), :fname => @first, :lname => @last)
+                if@user.age > 15 && @user.age <= 85
+                @user.update_attributes(:gender => @gender, :height=> @height, :weight => @weight, :bday => Date.parse(@birthday.to_s), :fname => @first, :lname => @last)
                 format.html{redirect_to authenticated_root_path, notice: 'Thank you! Enjoy!'}
               end
             end
