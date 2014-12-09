@@ -156,7 +156,7 @@
 				<a data-toggle="collapse" data-parent="#accordion" href="#accordionCharts"><h3 class="panel-title" style="color: white">Charts</h3></a>
 			</div>
 			<div class="panel-body">
-				<div class="container">
+				
 					<!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionCharts">
 					<p class='text-muted'> muted text inside the closed container </p></a> -->
 					<div id="accordionCharts" class="panel-collapse collapse in">
@@ -168,7 +168,7 @@
 							</table>
 						</div>
 					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -197,6 +197,7 @@
 				<div id="accordionDiet" class="panel-collapse collapse">
 					<div class="panel-body">
 						<% if current_user.diets.count > 0 %>
+						<div class="table-responsive">
 						<table class="table">
 							<% current_user.diets.each do |d| %>
 							<tr>
@@ -206,7 +207,7 @@
 								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">
 									Show
 								</button></td>
-								<td><%= button_to 'Remove meal', @diet_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								<td><%= button_to 'Remove', @diet_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 							</tr>
 							<!-- Modal -->
 							<div class="modal fade" id="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= d.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
@@ -237,6 +238,7 @@
 								<%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %> </td>
 							</tr>
 						</table>
+						</div>
 						<% else %>
 						<%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
 						<% if !current_user.diet_score.nil? %>
@@ -261,7 +263,8 @@
 				<div id="accordionFitness" class="panel-collapse collapse">
 					<div class="panel-body">
 						<% if current_user.exercises.count > 0 %>
-						<table class="table table-condensed">
+						<div class="table-responsive">
+						<table class="table">
 							<% current_user.exercises.each do |e| %>
 							<tr>
 								<% @exercise_manager = ExerciseManager.where(exercise_id: e.id, user_id: current_user.id).first %>
@@ -270,7 +273,7 @@
 								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">
 									Show
 								</button></td>
-								<td><%= button_to 'Remove exercise', @exercise_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								<td><%= button_to 'Remove m', @exercise_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 							</tr>
 							<!-- Modal -->
 							<div class="modal fade" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
@@ -304,6 +307,7 @@
 								<%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %> </td>
 							</tr>
 						</table>
+						</div>
 						<% else %>
 						<%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
 						<% if !current_user.ex_score.nil? %>
