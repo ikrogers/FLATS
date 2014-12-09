@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <%= f.label :bday, "Date of Birth" %><br />
-      <%= date_field(:user, :bday) %>
+      <%= f.date_select :bday, start_year: 1929, end_year: 1999, order: [:month, :day, :year] %>
     </div>
     <div class="form-group">
       <%= f.label :weight %><i> in pounds</i><br />
@@ -36,6 +36,17 @@
       <%= f.radio_button :gender, 'female' %>
       <%= label :gender, 'Female' %>
     </div>
+    <div class="form-group">
+			<%= label_tag "Would you like personal training?" %><br>
+			<%= f.radio_button :diet_fitness_flag, 0 %>
+			<%= label :diet_fitness_flag, 'No' %>
+			<%= f.radio_button :diet_fitness_flag, 1 %>
+			<%= label :diet_fitness_flag, 'Diet' %>
+			<%= f.radio_button :diet_fitness_flag, 2 %>
+			<%= label :diet_fitness_flag, 'Fitness' %>
+			<%= f.radio_button :diet_fitness_flag, 3 %>
+			<%= label :diet_fitness_flag, 'Both' %>
+		</div>
     <fieldset>
       <p>Leave these fields blank if you don't want to change your password.</p>
       <div class="form-group">

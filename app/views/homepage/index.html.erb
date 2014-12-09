@@ -11,6 +11,7 @@
     
 <% elsif current_user.u_type == 3 %>
 <!-- Trainer view -->
+
 <!-- Trainer can: if user wants to be coached, trainer can see users and coach -->
     <div style="width: 60%; margin-left: 20%;">
         <center>
@@ -27,17 +28,32 @@
             </thead>
             <tbody>
                 <% User.all.each do |u| %>
-                   <% if u.diet_fitness_flag > 0 %>
+                    <% @user = User.find_by_id(u.id) %>
+                    <% if u.diet_fitness_flag == 1 %>
                         <tr>
-                            <% @user = User.find_by_id(u.id) %>
+                            <td><%= u.fullname %></td>
+                            <td><%= link_to 'Train', new_diet_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-default' %></td>
+                            <td></td>
+                        </tr>
+                    <% elsif u.diet_fitness_flag == 2 %>
+                        <tr>
+                            <td><%= u.fullname %></td>
+                            <td></td>
+                            <td><%= link_to 'Train', new_exercise_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-default' %></td>
+                        </tr>
+                    <% elsif u.diet_fitness_flag == 3 %>
+                        <tr>
                             <td><%= u.fullname %></td>
                             <td><%= link_to 'Train', new_diet_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-default' %></td>
                             <td><%= link_to 'Train', new_exercise_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-default' %></td>
                         </tr>
+                    <% else %>
                     <% end %>
                 <% end %>
             </tbody>
         </table>
+        <%= button_to "Diet Management", diets_path, :method => :get, :class => 'btn btn-default' %>
+        <%= button_to "Exersise Management", exercises_path, :method => :get, :class => 'btn btn-default' %>
     </div>
 
 <% elsif current_user.u_type == 1 %>
@@ -198,7 +214,9 @@
                                         </table>
                                     <% else %>
                                         <%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-                                        <%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                        <% if !current_user.diet_score.nil? %>
+                                            <%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                        <% end %>
                                     <% end %>
                                 </div>
                             </div>
@@ -253,7 +271,9 @@
                                         </table>
                                     <% else %>
                                         <%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-                                        <%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                        <% if !current_user.ex_score.nil? %>
+                                            <%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
+                                        <% end %>
                                     <% end %>
                                 </div>
                             </div>
