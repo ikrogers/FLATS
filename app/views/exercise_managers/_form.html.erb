@@ -23,6 +23,7 @@
       <% @user = (params[:user].nil? ? current_user.id : params[:user]) %>
       <% Exercise.all.each do |e| %>
         <% if ((fit_rating(@user) == "Extremely Poor" && e.intensity <= 1) ||
+        	(fit_rating(@user) == "Poor" && e.intensity <= 1 )) ||
           (fit_rating(@user) == "Below Average" && e.intensity <= 2) ||
           (fit_rating(@user) == "Average" && e.intensity <= 3) ||
           (fit_rating(@user) == "Above Average" && e.intensity <= 4) ||
