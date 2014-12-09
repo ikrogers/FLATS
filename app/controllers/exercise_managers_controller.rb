@@ -64,15 +64,21 @@ class ExerciseManagersController < ApplicationController
   
   def fitness_score
     @user = current_user
-    @distance = params[:distance] rescue nil
-    if @distance != nil
-    @distance = (@distance.to_f / 0.00062137)
+    @d = params[:distance] rescue nil
+    if @d != nil
+    @distance = (@d.to_f / 0.00062137)
     @vomax = ((@distance.to_f-505) / 45)
     @user.update_attributes(:ex_score => @vomax)
 
     end
+    if @d != ""
     respond_to do |format|
       format.html{redirect_to authenticated_root_path, notice: 'Thank you for completing your fitness test!'}
+    end
+    else 
+    respond_to do |format|
+      format.html{redirect_to fitness_info_input_path, alert: 'Please enter a positive number!'}
+    end
     end
   end
   

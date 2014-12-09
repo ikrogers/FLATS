@@ -23,14 +23,7 @@
         "@path": "/.c9/runners",
         "configs": {
             "@inited": "true",
-            "json()": {
-                "Ruby on Rails": {
-                    "command": "",
-                    "default": true,
-                    "name": "Ruby on Rails",
-                    "runner": "Ruby on Rails (Rails 4.0 + Ruby 2.1)"
-                }
-            }
+            "json()": {}
         }
     },
     "share": {
