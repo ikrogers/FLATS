@@ -1,26 +1,24 @@
 <p id="notice"><%= notice %></p>
-<div class="panel panel-primary">
-  <center>
-    <p>
-      <strong>Food:</strong>
-      <%= @diet.name %>
-    </p>
-  </center>
+<div class="panel panel-primary" style="max-width: 40%;margin: auto;">
+ <div class="panel-heading">
+    <%= @diet.name %>
+ </div>
+
+<p>
+  <strong><center>Description:</center></strong>
+  <%= simple_format h @diet.descr %>
+</p>
+
+<p>
+  <strong><center>Calories: <%= @diet.calories %></center></strong>
   
-  <p>
-    <strong>Description:</strong>
-    <%= @diet.descr %>
-  </p>
-  
-  <p>
-    <strong>Calories:</strong>
-    <%= @diet.calories %>
-  </p>
-  <center>
-    <% if current_user.u_type > 1  %>
-      <%= link_to 'Edit', edit_diet_path(@diet) %>|
-      <%= link_to 'Index', diets_path %>
+</p>
+
+<center>
+    <% if current_user.u_type > 1 %>
+      <%= link_to 'Edit', edit_exercise_path(@exercise) %>|      
+      <%= link_to 'Index', exercises_path %>
 
     <% end %>
-  </center>
+</center>
 </div>

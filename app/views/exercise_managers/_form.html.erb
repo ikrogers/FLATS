@@ -12,11 +12,11 @@
   <table class="table" style="width: 70%; margin-left: 15%;">
     <thead>
       <tr>
-        <td></td>
-        <td>Exercise</td>
-        <td><center>Intensity</center></td>
-        <td><center>Calories Burned</center></td>
-        <td></td>
+        <th></th>
+        <th>Exercise</th>
+        <th><center>Intensity</center></th>
+        <th><center>Calories Burned</center></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
           (fit_rating(@user) == "Excellent" && e.intensity <= 6)) %>
             <tr>
                <%= hidden_field_tag :trainee, @user.id %>
-               <td style="width:25px;"><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
+               <td><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
                <td><%= e.name %></td>
                <td><center><%= e.intensity %></center></td>
                <td><center><%= e.calories %></center></td>
