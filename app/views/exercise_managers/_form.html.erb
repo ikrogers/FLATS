@@ -29,21 +29,13 @@
           (fit_rating(@user) == "Good" && e.intensity <= 5) ||
           (fit_rating(@user) == "Excellent" && e.intensity <= 6)) %>
             <tr>
-<<<<<<< HEAD
-               <%= hidden_field_tag :trainee, @user.id %>
-               <td><%= check_box_tag 'project[sel_ex][]', e.id, false %></td>
-               <td><%= e.name %></td>
-               <td><center><%= e.intensity %></center></td>
-               <td><center><%= e.calories %></center></td>
-               <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
-=======
+
               <%= hidden_field_tag :trainee, @user.id %>
               <td><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
               <td><%= e.name %></td>
               <td><center><%= e.intensity %></center></td>
               <td><center><%= e.calories %></center></td>
               <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
->>>>>>> clinton-final
             </tr>
             <!-- Modal -->
             <div class="modal fade" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
