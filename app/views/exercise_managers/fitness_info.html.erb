@@ -30,7 +30,7 @@
 						<br>
 						<i> ~How far have you gone in 12 minutes use miles ex 1.5?</i>
 						<br>
-						<%= number_field_tag :distance, nil, in: 0.1..4.0, :step => 0.1, class: 'form-control' %>
+						<%= number_field_tag :distance, current_user.ex_score.nil? ? 0.1 : 0.1, in: 0.1..4.0, :step => 0.1, class: 'form-control' %>
 					</div>
 					<div class="actions">
 						<%= submit_tag "Submit", :class => 'btn btn-primary custombtnblock'  %>

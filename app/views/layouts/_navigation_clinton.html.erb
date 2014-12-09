@@ -27,8 +27,12 @@
               <li class="divider"></li>
               <li><center>User</center></li>
               <li class="divider"></li>
-              <li><%= link_to 'Add exercise', new_exercise_manager_path %></li>
-              <li><%= link_to 'Add diet plan', new_diet_manager_path %></li>
+              <% if !current_user.ex_score.nil? %>
+                <li><%= link_to 'Add exercise', new_exercise_manager_path %></li>
+              <% end %>
+              <% if !current_user.diet_score.nil? %>
+                <li><%= link_to 'Add diet plan', new_diet_manager_path %></li>
+              <% end %>
             <% elsif current_user.u_type == 3 %>
               <li class="divider"></li>
               <li><center>Trainer</center></li>
@@ -48,7 +52,6 @@
             <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
           </ul>
         </li>
-
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
