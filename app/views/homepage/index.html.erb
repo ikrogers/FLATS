@@ -104,7 +104,12 @@
                             <div id="accordionStats" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <table class="table">
-                                        <tr><td><p>Age: <%= current_user.age %></p>
+                                        <tr><td>
+                                        	<%if current_user.age > 15 && current_user.age <= 85%>
+                                        	<p>Age: <%= current_user.age %></p>
+<%else%>                                        	
+                                        	                                        	<p>Age: Please update your age. You seem a bit out of ordniary...</p>
+<%end%>
                                             <p>Weight: <%= current_user.weight %> lbs.</p>
                                             <% @feet = current_user.height / 12 %>
                                             <% @inches = current_user.height % 12 %>
