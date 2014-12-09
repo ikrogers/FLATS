@@ -71,13 +71,13 @@ class ExerciseManagersController < ApplicationController
     @user.update_attributes(:ex_score => @vomax)
 
     end
-    if @d != nil
+    if @d != ""
     respond_to do |format|
       format.html{redirect_to authenticated_root_path, notice: 'Thank you for completing your fitness test!'}
     end
     else 
     respond_to do |format|
-      format.html{redirect_to authenticated_root_path, alert: 'Please enter a positive number'}
+      format.html{redirect_to authenticated_root_path, alert: 'Please enter a positive number!'}
     end
     end
   end
