@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <%= f.label :bday, "Date of Birth" %><br />
-      <%= f.date_select :bday, start_year: 1929, end_year: 1999, order: [:month, :day, :year] %>
+      <%= f.date_select :bday, nil, class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= f.label :weight %><i> in pounds</i><br />
