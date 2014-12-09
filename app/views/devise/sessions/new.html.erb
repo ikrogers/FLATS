@@ -14,40 +14,28 @@
 
 		<div class="carousel-inner">
 			<div class="item slides active">
-				<div class="slide-1"></div>
-				<div class="hero">
-					<hgroup>
-						<div class="container" style="margin-top: 20px; align: center">
+				<div class="slide-1">
+				<div id = "cc">
+					
+						<div class="container" style="margin-top: 20px;">
 							<div class="row">
 								<div class="col-lg-9 col-md-9 col-xs-9">
-									<img src="/assets/TLogo.png" class="img-circle" alt="Responsive image">
+									<h1 style="font-size: 2em; font-weight: bold; margin: 0; padding: 0; border-color: #E56717;">FLATS</h1>
+									<h2 style="font-size: 0.7em; font-weight: bold; margin: 0; padding: 0; border-color: #E56717;">Fat Loss And Training System</h2><br>
 								</div>
 								<div class="col-lg-4 col-md-4 col-xs-4"></div>
 							</div>
 
-							<div class="row" style="margin-top: 150px;">
-								<div class="col-lg-4 col-md-4 col-xs-4">
-									<h2 class="text-center"><em>Lose Weight</em></h2>
-									<img src="/assets/shot1.jpg" class="img-thumnail" alt="Responsive image" style="margin-top:30px">
-								</div>
-								<div class="col-lg-1 col-md-1 col-xs-1"></div>
-								<div class="col-lg-4 col-md-4 col-xs-4">
-									<h3 class="text-center"><em>Get Healthy</em></h3>
-									<img src="/assets/shot2.jpg" class="img-thumnail" alt="Responsive image" style="margin-top:30px">
-								</div>
-
-								<div class="col-lg-3 col-md-3 col-xs-3"></div>
-							</div>
+							
 
 						</div>
-					</hgroup>
+					</div>
 				</div>
 			</div>
 			<div class="item slides">
 				<div class="slide-2"></div>
 				<div class="hero">
 					<hgroup>
-						<h2 style="text-align: center; color: grey"></h2>
 						<%= render 'login'%>
 					</hgroup>
 				</div>
@@ -56,7 +44,6 @@
 				<div class="slide-3"></div>
 				<div class="hero">
 					<div>
-						<h2 style="text-align: center; color: grey"></h2>
 						<%= render 'devise/registrations/regnew'%>
 					</div>
 				</div>
@@ -69,6 +56,24 @@
 <!--           CSS              -->
 
 <style>
+#cc{
+	position: absolute;
+		top: 25%;
+		right: 35%;
+		z-index: 10;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		-moz-transform: translate3d(-50%,-50%,0);
+		-ms-transform: translate3d(-50%,-50%,0);
+		-o-transform: translate3d(-50%,-50%,0);
+		transform: translate3d(-50%,-50%,0);
+		font-size: 4em;
+		left: 25%;
+		font-weight: bold;
+		margin: 0;
+		padding: 0;
+		border-color: #E56717;
+		
+}
 	#cat {
 		left: 0;
 		right: 0;
@@ -115,32 +120,38 @@
 		-o-transform: translate3d(-50%,-50%,0);
 		transform: translate3d(-50%,-50%,0);
 	}
-	.hero h1 {
-
-		font-weight: bold;
-		margin: 0;
-		padding: 0;
+	hero1 {
+		position: absolute;
+		top: 25%;
+		left: 35%;
+		z-index: 10;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		-moz-transform: translate3d(-50%,-50%,0);
+		-ms-transform: translate3d(-50%,-50%,0);
+		-o-transform: translate3d(-50%,-50%,0);
+		transform: translate3d(-50%,-50%,0);
 	}
-	.hero h3 {
+	.hero h1 {
 		font-size: 4em;
+		left: 25%;
 		font-weight: bold;
-		color: purple;
-		text-shadow: black 0.2em 0.2em 0.3em;
 		margin: 0;
 		padding: 0;
 		border-color: #E56717;
-		text-shadow: 5px 5px 5px white;
 	}
 	.hero h2 {
-		font-size: 4em;
+		font-size: 3em;
 		font-weight: bold;
-		color: #191970;
-		border-color: blue;
-		text-shadow: black 0.2em 0.2em 0.3em;
 		margin: 0;
 		padding: 0;
 		border-color: #E56717;
-		text-shadow: 5px 5px 5px white;
+	}
+	.hero h3 {
+		font-size: 2em;
+		font-weight: bold;
+		margin: 0;
+		padding: 0;
+		border-color: #E56717;
 	}
 
 	.fade-carousel .carousel-inner .item .hero {
