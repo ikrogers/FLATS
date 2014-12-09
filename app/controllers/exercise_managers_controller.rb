@@ -77,7 +77,7 @@ class ExerciseManagersController < ApplicationController
     end
     else 
     respond_to do |format|
-      format.html{redirect_to authenticated_root_path, alert: 'Please enter a positive number!'}
+      format.html{redirect_to fitness_info_input_path, alert: 'Please enter a positive number!'}
     end
     end
   end
