@@ -137,7 +137,12 @@
 										<% end %>
 									</p>
 									<p>
+										 <%if current_user.age > 15 && current_user.age <= 85%>
+									
 										Diet Score: <%= (@dscore.nil? || @dscore.to_i == 0) ? (button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => "btn btn-danger") : @dscore + " <i>kilocalories must be consumed to maintain current weight</i>".html_safe %>
+										<%else%>
+									  Diet Score:	Due to your age being really unusual we will not display your diet score. Please update your age.
+										<%end%>
 									</p></td>
 								</tr>
 							</table>
