@@ -24,7 +24,7 @@
       <% Diet.all.each do |d| %>
         <tr>
           <%= hidden_field_tag :trainee, @user %>
-          <td><%= check_box_tag 'project[sel_diet][]', d.id, false, class: 'form-control' %></td>
+          <td><%= check_box_tag 'project[sel_diet][]', d.id, false %></td>
           <td><%= d.name %></td>
           <td><%= d.descr %></td>
           <td><center><%= d.calories %></center></td>

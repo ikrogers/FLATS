@@ -234,13 +234,13 @@
 							</div>
 							<% end %>
 							<tr>
-								<td> <%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-								<%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %> </td>
+								<td> <%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %><br>
+								<td><%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %> </td>
 							</tr>
 						</table>
 						</div>
 						<% else %>
-						<%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+						<%= button_to "Take Diet Test".html_safe, diet_info_input_path, :method => :get, :class => (current_user.diet_score.nil? ? "btn btn-danger" : "btn btn-success") %><br>
 						<% if !current_user.diet_score.nil? %>
 						<%= button_to "Make My Diet", new_diet_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
 						<% end %>
@@ -273,7 +273,7 @@
 								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">
 									Show
 								</button></td>
-								<td><%= button_to 'Remove m', @exercise_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								<td><%= button_to 'Remove', @exercise_manager, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 							</tr>
 							<!-- Modal -->
 							<div class="modal fade" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
@@ -303,13 +303,13 @@
 							</div>
 							<% end %>
 							<tr>
-								<td> <%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
-								<%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %> </td>
+								<td> <%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %><br>
+								<td><%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %> </td>
 							</tr>
 						</table>
 						</div>
 						<% else %>
-						<%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %>
+						<%= button_to "Take Fitness Test", fitness_info_input_path, :method => :get, :class => (current_user.ex_score.nil? ? "btn btn-danger" : "btn btn-success") %><br>
 						<% if !current_user.ex_score.nil? %>
 						<%= button_to "Make My Workout", new_exercise_manager_path, :method => :get, :class => "btn btn-default btn-small" %>
 						<% end %>
