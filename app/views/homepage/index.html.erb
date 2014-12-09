@@ -33,24 +33,24 @@
 		</thead>
 		<tbody>
 			<% User.all.each do |u| %>
-			<% @user = User.find_by_id(u.id) %>
+			<% @user = u %>
 			<% if u.diet_fitness_flag == 1 %>
 			<tr>
 				<td><%= u.fullname %></td>
-				<td><%= button_to 'Train', new_diet_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-success' %></td>
+				<td><%= button_to 'Train', new_diet_manager_path(@user.id), :method => :get, :class => 'btn btn-success' %></td>
 				<td></td>
 			</tr>
 			<% elsif u.diet_fitness_flag == 2 %>
 			<tr>
 				<td><%= u.fullname %></td>
 				<td></td>
-				<td><%= button_to 'Train', new_exercise_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-warning' %></td>
+				<td><%= button_to 'Train', new_exercise_manager_path(@user.id), :method => :get, :class => 'btn btn-warning' %></td>
 			</tr>
 			<% elsif u.diet_fitness_flag == 3 %>
 			<tr>
 				<td><%= u.fullname %></td>
-				<td><%= button_to 'Train', new_diet_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-success' %></td>
-				<td><%= button_to 'Train', new_exercise_manager_path(:user => @user.id), :method => :get, :class => 'btn btn-warning' %></td>
+				<td><%= button_to 'Train', new_diet_manager_path(@user.id), :method => :get, :class => 'btn btn-success' %></td>
+				<td><%= button_to 'Train', new_exercise_manager_path(@user.id), :method => :get, :class => 'btn btn-warning' %></td>
 			</tr>
 			<% else %>
 			<% end %>

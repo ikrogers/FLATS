@@ -9,39 +9,68 @@
       </ul>
     </div>
   <% end %>
+      	<%
+      	if current_user.u_type == 3
+      	@uid = request.original_url.split('.')
+      	@uid = @uid[1].to_i
+      	else
+      	@uid = current_user.id
+      	end
+      	%>
+<%=@uid%>
   <table class="table" style="width: 70%; margin-left: 15%;">
     <thead>
       <tr>
-        <th></th>
-        <th>Exercise</th>
-        <th><center>Intensity</center></th>
-        <th><center>Calories Burned</center></th>
-        <th></th>
+        <td></td>
+        <td>Exercise</td>
+        <td><center>Intensity</center></td>
+        <td><center>Calories Burned</center></td>
+        <td></td>
       </tr>
     </thead>
     <tbody>
-      <% @user = User.find_by_id(params[:id]) %>
+      <% @user = @uid %>
       <% Exercise.all.each do |e| %>
-      
-       <% if fit_rating(@user) == "Extremely Poor" && e.intensity <= 1 %>
-          <tr>
-
-       <%= hidden_field_tag :trainee, @user.id %>
-       <td><%= check_box_tag 'project[sel_ex][]', e.id, false, class: 'form-control' %></td>
-       <td><%= e.name %></td>
-       <td><center><%= e.intensity %></center></td>
-       <td><center><%= e.calories %></center></td>
-       <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
+        <% if ((fit_rating(@user) == "Extremely Poor" && e.intensity <= 1) ||
+        	(fit_rating(@user) == "Poor" && e.intensity <= 1) ||
+          (fit_rating(@user) == "Below Average" && e.intensity <= 2) ||
+          (fit_rating(@user) == "Average" && e.intensity <= 3) ||
+          (fit_rating(@user) == "Above Average" && e.intensity <= 4) ||
+          (fit_rating(@user) == "Good" && e.intensity <= 5) ||
+          (fit_rating(@user) == "Excellent" && e.intensity <= 6)) %>
+            <tr>
+               <%= hidden_field_tag :trainee, @user.id %>
+               <td style="width:25px;"><%= check_box_tag 'project[sel_ex][]', e.id, false %></td>
+               <td><%= e.name %></td>
+               <td><center><%= e.intensity %></center></td>
+               <td><center><%= e.calories %></center></td>
+               <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal">Show</button></td>
             </tr>
             <!-- Modal -->
-            
+            <div class="modal fade" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_modal" tabindex="-1" role="dialog" aria-labelledby="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="<%= e.name.gsub(/[^0-9A-Za-z]/, '') %>_label"><%= e.name %></h4>
+                  </div>
+                  <div class="modal-body">
+                    <b>Calories Burned:</b> <%= e.calories %><br />
+                    <b>Instructions:</b> <%= simple_format h e.descr %><br />
+                    <iframe width="100%" height="315px" src="//www.youtube.com/embed/<%= e.video %>" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           <% end %>
-        <% end %> 
-        
+        <% end %>
     </tbody>
   </table>
   
   <div class="actions" style="margin-left: 15%;">
-    <%= f.submit "Add exercises" %>
+    <%= f.submit "Add exercises", class: "btn btn-primary" %>
   </div>
 <% end %>
