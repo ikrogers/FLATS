@@ -5,10 +5,32 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(:email => "ikrogers@valdosta.edu", :fname => "Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 2, :gender => "Male",:bday => '1991-10-10')
-User.create(:email => "ik@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Female",:bday => '1991-10-10')
-User.create(:email => "ik2@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3, :gender => "Male",:bday => '1991-10-10')
-User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "789789789", :password_confirmation => "789789789", :u_type => 2, :gender => "Male", :bday => '1991-10-10')
+# Seeded administration profiles
+User.create(:email => "ikrogers@valdosta.edu", :fname => "Ilya", :lname=>"Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 2, :gender => "Male",:bday => '1991-10-10', :diet_fitness_flag => 0, :ex_score => 90, :diet_score => 6000, :height => 71, :weight => 180)
+User.create(:email => "ik@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Female",:bday => '1991-10-10', :diet_fitness_flag => 0, :ex_score => 90, :diet_score => 6000, :height => 71, :weight => 180)
+User.create(:email => "ik2@valdosta.edu", :fname => "Ilya", :lname => "Rogers", :password => "123123123", :password_confirmation => "123123123", :u_type => 3, :gender => "Male",:bday => '1991-10-10', :diet_fitness_flag => 0, :ex_score => 90, :diet_score => 6000, :height => 71, :weight => 180)
+User.create(:email => "tccauley@valdosta.edu", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 2, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 0, :ex_score => 90, :diet_score => 6000, :height => 71, :weight => 180)
+User.create(:email => "clint.cauley@gmail.com", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 0, :ex_score => 90, :diet_score => 6000, :height => 71, :weight => 180)
+User.create(:email => "tcauley@usg.edu", :fname => "Clinton", :lname => "Cauley", :password => "123123123", :password_confirmation => "123123123", :u_type => 3, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 0, :ex_score => 90, :diet_score => 6000, :height => 71, :weight => 180)
+
+# Users
+User.create(:email => "bob@dole.edu", :fname => "Bob", :lname => "Dole", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 2, :ex_score => 20, :diet_score => 2400, :height => 71, :weight => 180)
+User.create(:email => "george@bush.edu", :fname => "George", :lname => "Bush", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 0, :ex_score => 39, :diet_score => 1900, :height => 71, :weight => 180)
+User.create(:email => "dick@cheney.edu", :fname => "Dick", :lname => "Cheney", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 3, :ex_score => 41, :diet_score => 1600, :height => 71, :weight => 180)
+User.create(:email => "bill@clinton.edu", :fname => "William", :lname => "Clinton", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 1, :ex_score => 52, :diet_score => 1800, :height => 71, :weight => 180)
+User.create(:email => "abraham@lincoln.edu", :fname => "Abraham", :lname => "Lincoln", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 1, :ex_score => 61, :diet_score => 1200, :height => 71, :weight => 180)
+User.create(:email => "bill@plates.edu", :fname => "Bill", :lname => "Plates", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 3, :ex_score => 73, :diet_score => 4500, :height => 71, :weight => 180)
+User.create(:email => "darth@vader.edu", :fname => "Darth", :lname => "Vader", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 2, :ex_score => 48, :diet_score => 3200, :height => 71, :weight => 180)
+User.create(:email => "erly@kailer.edu", :fname => "Erly", :lname => "Kailer", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 3, :ex_score => 43, :diet_score => 1500, :height => 71, :weight => 180)
+User.create(:email => "jackson@flackson.edu", :fname => "Jackson", :lname => "Flackson", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 1, :ex_score => 32, :diet_score => 1600, :height => 71, :weight => 180)
+User.create(:email => "john@kennedy.edu", :fname => "John", :lname => "Kennedy", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 1, :ex_score => 54, :diet_score => 2000, :height => 71, :weight => 180)
+User.create(:email => "chuck@norris.edu", :fname => "Chuck", :lname => "Norris", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 2, :ex_score => 63, :diet_score => 2300, :height => 71, :weight => 180)
+User.create(:email => "gumby@gimp.edu", :fname => "Gumby", :lname => "Gimp", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 2, :ex_score => 45, :diet_score => 2100, :height => 71, :weight => 180)
+User.create(:email => "tim@honks.edu", :fname => "Tim", :lname => "Honks", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 0, :ex_score => 23, :diet_score => 1800, :height => 71, :weight => 180)
+User.create(:email => "peter@griffin.edu", :fname => "Peter", :lname => "Griffin", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 0, :ex_score => 80, :diet_score => 1750, :height => 71, :weight => 180)
+User.create(:email => "chris@griffin.edu", :fname => "Chris", :lname => "Griffin", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 2, :ex_score => 60, :diet_score => 1800, :height => 71, :weight => 180)
+User.create(:email => "swolbraham@lincoln.edu", :fname => "Swolbraham", :lname => "Lincoln", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 3, :ex_score => 30, :diet_score => 1850, :height => 71, :weight => 180)
+User.create(:email => "aunt@jemima.edu", :fname => "Aunt", :lname => "Jemima", :password => "123123123", :password_confirmation => "123123123", :u_type => 1, :gender => "Male", :bday => '1984-07-02', :diet_fitness_flag => 1, :ex_score => 75, :diet_score => 2000, :height => 71, :weight => 180)
 
 
 #Exercises are labeled 1-6 in intensity. I split them together into their different groups based on calories lost more than anything ele, just to be simple
@@ -306,7 +328,7 @@ Diet.create(:name => "Butter",
     :calories => 36, 
     :intensity => 1)
     
-Diet.create(:name => "Schrimp", 
+Diet.create(:name => "Shrimp", 
     :descr => "It's high in calcium, iodine and protein but low in food energy", 
     :calories => 110, 
     :intensity => 2)
@@ -326,7 +348,7 @@ Diet.create(:name => "Vegatables Soup",
     :calories => 255, 
     :intensity => 3)
     
-Diet.create(:name => "COTTAGE CHEESE", 
+Diet.create(:name => "Cottage Cheese", 
     :descr => "is a fresh cheese curd product with a mild flavor. A 4-oz (113-g) serving of 4% fat product has about 120 calories, 5 g fat, 3 g carbohydrates, and 14 g protein.
                It also contains about 500 mg sodium, 70 mg calcium and 20 mg cholesterol", 
     :calories => 90, 
