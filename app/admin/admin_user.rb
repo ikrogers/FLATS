@@ -1,6 +1,6 @@
 ActiveAdmin.register AdminUser do
 
-  permit_params :email, :password, :password_confirmation, :weight, :height, :bday, :gender, :u_type
+  permit_params :email, :password, :password_confirmation, :weight, :height, :bday, :gender, :u_type, :fname, :lname,:ex_score,:diet_score,:diet_score,
 
 
   index do
