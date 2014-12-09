@@ -95,7 +95,7 @@
                 <% @fscore = number_with_precision(current_user.ex_score.to_f, :precision => 2) %>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionStats"><h3 class="panel-title">Stats</h3></a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionStats"><h3 class="panel-title" style="color: white">Stats</h3></a>
                     </div>
                     <div class="panel-body">
                         <div class="container">
@@ -137,7 +137,7 @@
             <div class="col-xs-9 col-md-9">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionCharts"><h3 class="panel-title">Charts</h3></a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionCharts"><h3 class="panel-title" style="color: white">Charts</h3></a>
                     </div>
                     <div class="panel-body">
                         <div class="container">
@@ -167,7 +167,7 @@
                     <div class="panel-heading">
                         <% @diet_differential = current_user.diets.map {|d| d['calories']}.reduce(0, :+).round %>
                         <% @remaining = @dscore.to_i - @diet_differential.to_i %>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionDiet"><h3 class="panel-title">Diet
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionDiet"><h3 class="panel-title" style="color: white">Diet
                             <% if !(current_user.diet_score.nil?) %>
                                 <% @numbars = (@diet_differential.to_f / @dscore.to_f) * 20 %>
                                 <% if @numbars > 20; @numbars = 20; end %>
@@ -234,7 +234,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <% @ex_differential = current_user.exercises.map {|d| d['calories']}.reduce(0, :+).round %>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionFitness"><h3 class="panel-title">Fitness ~<%= @ex_differential %> calories burned</h3></a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#accordionFitness"><h3 class="panel-title" style="color: white">Fitness ~<%= @ex_differential %> calories burned</h3></a>
                     </div>
                     <div class="panel-body">
                             <!-- <a data-toggle="collapse" class='text-muted' data-parent="#accordion" href="#accordionFitness">
